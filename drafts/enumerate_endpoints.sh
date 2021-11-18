@@ -12,9 +12,13 @@ go install github.com/OJ/gobuster/v3@latest
 go get -u -v github.com/ffuf/ffuf
 ~/go/bin/ffuf -w ${WORDLIST} -u https://${TARGET_TLD}/FUZZ -mc all -c -v -o ffuf-${TARGET_TLD}.output
 
+curl -L -o config.ini https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini
+amass enum -active -d ${TARGET_TLD} -config config.ini
+
+git clone --depth=1 https://github.com/projectdiscovery/nuclei-templates.git
+nuclei -target ${TARGET_TLD} -t nuclei-templates/exposures/apis/
+
 ## In progress
-# amass enum -active -d ${TARGET_TLD} -config config.ini
-# nuclei -target ${TARGET_TLD} -t exposures/apis/
 # jaeles scan -s swagger-ui-probing.yaml -u ${TARGET_TLD}
 # arjun -u https://${TARGET_TLD}/endpoint
 # python3 paramspider.py --domain ${TARGET_TLD}
