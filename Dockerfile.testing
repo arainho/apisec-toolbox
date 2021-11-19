@@ -43,7 +43,8 @@ RUN addgroup -g 9999 $MY_GROUP && \
 USER $MY_USER
 
 # workdir
-RUN mkdir -m 750 -p $MY_HOME/bin && \
+RUN mkdir -m 750 -p $APPS_TARGET && \
+    mkdir -m 750 -p $MY_HOME/bin && \
     mkdir -m 750 -p $MY_HOME/plugins && \
     mkdir -m 750 -p $MY_HOME/wordlists && \
     mkdir -m 750 -p $MY_HOME/extensions && \
@@ -74,5 +75,11 @@ RUN python3 -m pip install --upgrade pipenv && \
 # 3. uncomment ENV and RUN lines                      #
 # 4. build the image                                  #
 #######################################################
-# ENV TOOL_NAME="tool-to-test"
+# ENV TOOL_NAME="openapi_security_scanner.py"
 # RUN <add installation commands here>
+
+ENV TOOL_NAME="openapi_security_scanner.py"
+RUN git clone --depth=1 https://github.com/ngalongc/openapi_security_scanner $APPS_TARGET/openapi_security_scanner && \
+    cd $APPS_TARGET/openapi_security_scanner && \
+    python3 -m pip install --user -r requirements.txt && \
+    ln -s $APPS_TARGET/openapi_security_scanner/openapi_security_scanner.py  $MY_HOME/bin/openapi_security_scanner.py
