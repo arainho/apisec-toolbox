@@ -223,9 +223,10 @@ RUN git clone --depth=1  https://github.com/TheHackerDev/race-the-web $MY_HOME/r
 #       python3 ./build-restler.py --dest_dir $APPS_TARGET/restler-fuzzer/restler_bin && \
 #       ln -s $APPS_TARGET/restler-fuzzer/restler_bin/xxx.py $MY_HOME/bin/restler_bin
 
-#RUN git clone --depth=1 https://github.com/ngalongc/openapi_security_scanner $APPS_TARGET/openapi_security_scanner && \
-#       cd $APPS_TARGET/openapi_security_scanner && \
-#       python3 -m pip install --user -r requirements.txt 
+RUN git clone --depth=1 https://github.com/ngalongc/openapi_security_scanner $APPS_TARGET/openapi_security_scanner && \
+    cd $APPS_TARGET/openapi_security_scanner && \
+    python3 -m pip install --user -r requirements.txt && \
+    ln -s $APPS_TARGET/openapi_security_scanner/openapi_security_scanner.py  $MY_HOME/bin/openapi_security_scanner.py
 
 RUN git clone --depth=1 https://github.com/nikitastupin/clairvoyance.git $APPS_TARGET/clairvoyance && \
         cd $APPS_TARGET/clairvoyance && \
