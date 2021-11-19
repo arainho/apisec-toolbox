@@ -1,7 +1,6 @@
 # TODO's list
 
 ## Fix errors
-
 [ ] racepwn 
   - fix RUN lines for [racepwn](https://github.com/racepwn/racepwn)
 
@@ -11,9 +10,6 @@
       
 [ ] openapi_security_scanner
    - fix RUN lines for [openapi_security_scanner](https://github.com/ngalongc/openapi_security_scanner)
-
-## New tools to add
-[ ] [pwn-machine](https://github.com/yeswehack/pwn-machine)
 
 ## Done  
 These tools are included in the 'api-security-toolbox' image
