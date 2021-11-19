@@ -11,6 +11,13 @@
 [ ] openapi_security_scanner
    - fix RUN lines for [openapi_security_scanner](https://github.com/ngalongc/openapi_security_scanner)
 
+## Next steps
+[ ] Create a list of tools installed in 'api-security-toolbox'
+[ ] evaluate the proper file for the list (CSV, JSON) ?
+[ ] evaluate appropriate languange for building the list (Python, Golang, Other) ?
+[ ] Check if tools binaries or scripts are in the path
+[ ] Add name, path and sha256sum os each tool in the list 
+
 ## Done  
 These tools are included in the 'api-security-toolbox' image
 [x] [Ciphey](https://github.com/Ciphey/Ciphey), that automatically decrypt's encryptions without knowing the key or cipher, decode encodings, and crack hashes. 
