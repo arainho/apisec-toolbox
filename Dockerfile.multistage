@@ -25,11 +25,11 @@ RUN addgroup -g 9999 $MY_GROUP && \
                        ca-certificates coreutils build-base libzip-dev zip && \
     apk add --no-cache --update python2 python3 py3-pip && \
     python2 -m ensurepip && \
-    python2 -m pip install --upgrade pip && \
     unlink /usr/bin/pip && \
     unlink /usr/bin/python && \
     ln -s /usr/bin/pip3 /usr/bin/pip && \
     ln -s /usr/bin/python3 /usr/bin/python && \
+    python2 -m pip install --upgrade pip setuptools && \
     python3 -m pip install --upgrade pip setuptools && \
     apk add --no-cache --update nodejs npm && \
     apk add --no-cache --update libffi-dev python3-dev && \
@@ -282,11 +282,11 @@ RUN addgroup -g 9999 $MY_GROUP && \
                        ca-certificates coreutils build-base libzip-dev zip && \
     apk add --no-cache --update python2 python3 py3-pip && \
     python2 -m ensurepip && \
-    python2 -m pip install --upgrade pip && \
     unlink /usr/bin/pip && \
     unlink /usr/bin/python && \
     ln -s /usr/bin/pip3 /usr/bin/pip && \
     ln -s /usr/bin/python3 /usr/bin/python && \
+    python2 -m pip install --upgrade pip setuptools && \
     python3 -m pip install --upgrade pip setuptools && \
     apk add --no-cache --update nodejs npm && \
     apk add --no-cache --update libffi-dev python3-dev && \
