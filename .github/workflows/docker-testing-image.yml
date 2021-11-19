@@ -28,15 +28,15 @@ jobs:
       run: |-
         docker build \
           --no-cache \
-          -t api-security-toolbox:local \
+          -t api-security-toolbox:testing \
           -f Dockerfile.testing \
           .
 
     # Run additional tests
     - name: Tests
       run: |-
-        export TOOL_NAME="${TOOL_NAME:-bash}"
+        export TOOL_NAME="$(grep "^ENV TOOL_NAME=" Dockerfile.testing | awk -F "=\"" '{print $2}' | cut -d "\"" -f1)"
         docker run --rm \
-          api-security-toolbox:local \
+          api-security-toolbox:testing \
           which "$TOOL_NAME"; type "$TOOL_NAME"; file $(which "$TOOL_NAME")
 
