@@ -77,9 +77,3 @@ RUN python3 -m pip install --upgrade pipenv && \
 #######################################################
 # ENV TOOL_NAME="openapi_security_scanner.py"
 # RUN <add installation commands here>
-
-ENV TOOL_NAME="openapi_security_scanner.py"
-RUN git clone --depth=1 https://github.com/ngalongc/openapi_security_scanner $APPS_TARGET/openapi_security_scanner && \
-    cd $APPS_TARGET/openapi_security_scanner && \
-    python3 -m pip install --user -r requirements.txt && \
-    ln -s $APPS_TARGET/openapi_security_scanner/openapi_security_scanner.py  $MY_HOME/bin/openapi_security_scanner.py
