@@ -89,3 +89,5 @@ RUN git clone --depth=1 https://github.com/microsoft/restler-fuzzer $APPS_TARGET
        python3 -m pip install --user requests applicationinsights && \
        python3 ./build-restler.py --dest_dir $APPS_TARGET/restler-fuzzer/restler_bin && \
        ln -s $APPS_TARGET/restler-fuzzer/restler_bin/engine/restler.py $MY_HOME/bin/restler.py
+
+CMD ["/bin/bash"]
