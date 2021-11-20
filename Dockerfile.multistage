@@ -7,7 +7,7 @@ ENV MY_GROUP="appgroup"
 ENV MY_HOME="/home/$MY_USER"
 ENV GOPATH="$MY_HOME/go"
 ENV APPS_TARGET="$MY_HOME/apps"
-ENV PATH="$MY_HOME/go/bin:$MY_HOME/.local/bin:$MY_HOME/.cargo/bin:$MY_HOME/.apicheck_manager/bin:$PATH"
+ENV PATH="$MY_HOME/go/bin:$MY_HOME/.local/bin:$HOME/node_modules/.bin:$HOME/.rbenv/bin:$PATH:$MY_HOME/.cargo/bin:$MY_HOME/.apicheck_manager/bin:$PATH"
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
@@ -56,12 +56,10 @@ RUN python3 -m pip install --upgrade pipenv && \
     python3 -m pip install --user virtualenv && \
     python2 -m pip install --user virtualenv && \
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
-    export PATH="$HOME/.rbenv/bin:$PATH && \
-    echo export PATH="$HOME/.rbenv/bin:$PATH >> ~/.bashrc && \
     export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH" && \
     echo 'if which ruby >/dev/null && which gem >/dev/null; then PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"; fi' >> ~/.bashrc && \
     npm install yarn && \
-    export PATH="$PATH:$(yarn global bin)" && \
+    export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)" && \
     echo 'if which yarn >/dev/null; then echo export PATH="$PATH:$(yarn global bin)"; fi' >> ~/.bashrc && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
     source $MY_HOME/.cargo/env && \
@@ -267,7 +265,7 @@ ENV MY_GROUP="appgroup"
 ENV MY_HOME="/home/$MY_USER"
 ENV GOPATH="$MY_HOME/go"
 ENV APPS_TARGET="$MY_HOME/apps"
-ENV PATH="$MY_HOME/go/bin:$MY_HOME/.local/bin:$MY_HOME/.cargo/bin:$MY_HOME/.apicheck_manager/bin:$PATH"
+ENV PATH="$MY_HOME/go/bin:$MY_HOME/.local/bin:$HOME/node_modules/.bin:$HOME/.rbenv/bin:$PATH:$MY_HOME/.cargo/bin:$MY_HOME/.apicheck_manager/bin:$PATH"
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
@@ -313,12 +311,10 @@ RUN python3 -m pip install --upgrade pipenv && \
     python3 -m pip install --user virtualenv && \
     python2 -m pip install --user virtualenv && \
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
-    export PATH="$HOME/.rbenv/bin:$PATH && \
-    echo export PATH="$HOME/.rbenv/bin:$PATH >> ~/.bashrc && \
     export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH" && \
     echo 'if which ruby >/dev/null && which gem >/dev/null; then PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"; fi' >> ~/.bashrc && \
     npm install yarn && \
-    export PATH="$PATH:$(yarn global bin)" && \
+    export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)" && \
     echo 'if which yarn >/dev/null; then echo export PATH="$PATH:$(yarn global bin)"; fi' >> ~/.bashrc && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
     source $MY_HOME/.cargo/env && \
