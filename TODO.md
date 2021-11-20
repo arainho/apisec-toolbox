@@ -4,11 +4,6 @@
 - [ ] racepwn 
   - fix RUN lines for [racepwn](https://github.com/racepwn/racepwn)
 
-- [ ] restler-fuzzer
-   - fix RUN lines for [restler-fuzzer](https://github.com/microsoft/restler-fuzzer)
-   - or use oficial [Dockerfile](https://github.com/microsoft/restler-fuzzer/blob/main/docker/Dockerfile) in our multi-stage build
- 
-
 ## Next steps 
 - [ ] Create a list of tools installed in 'api-security-toolbox'  
 - [ ] evaluate the proper file for the list (CSV, JSON) ? 
@@ -21,6 +16,8 @@ These tools are included in the 'api-security-toolbox' image
 - [x] [Ciphey](https://github.com/Ciphey/Ciphey), that automatically decrypt's encryptions without knowing the key or cipher, decode encodings, and crack hashes. 
 - [x] openapi_security_scanner
       - fix RUN lines for [openapi_security_scanner](https://github.com/ngalongc/openapi_security_scanner)
+- [x] restler-fuzzer
+   - fix RUN lines for [restler-fuzzer](https://github.com/microsoft/restler-fuzzer)
  
 These tools are only available through docker-compose in [utils](/utils) folder
 - [x] [hoppscotch](https://github.com/hoppscotch/hoppscotch), an Open source API development ecosystem called.  
