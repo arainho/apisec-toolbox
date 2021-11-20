@@ -84,7 +84,7 @@ RUN git clone --depth=1 https://github.com/microsoft/restler-fuzzer $APPS_TARGET
        cd $APPS_TARGET/restler-fuzzer && \
        chmod u+x ./dotnet-install.sh && \
        ./dotnet-install.sh -c 5.0 && \
-       export PATH="$HOME/.dotnet:$PATH"
+       export PATH="$HOME/.dotnet:$PATH" && \
        mkdir -p $APPS_TARGET/restler-fuzzer/restler_bin && \
        cd $APPS_TARGET/restler-fuzzer && \
        python3 ./build-restler.py --dest_dir $APPS_TARGET/restler-fuzzer/restler_bin && \
