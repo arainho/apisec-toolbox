@@ -43,7 +43,8 @@ RUN addgroup -g 9999 $MY_GROUP && \
 USER $MY_USER
 
 # workdir
-RUN mkdir -m 750 -p $MY_HOME/bin && \
+RUN mkdir -m 750 -p $APPS_TARGET && \
+    mkdir -m 750 -p $MY_HOME/bin && \
     mkdir -m 750 -p $MY_HOME/plugins && \
     mkdir -m 750 -p $MY_HOME/wordlists && \
     mkdir -m 750 -p $MY_HOME/extensions && \
@@ -300,7 +301,8 @@ RUN addgroup -g 9999 $MY_GROUP && \
 
 USER $MY_USER
 
-RUN mkdir -m 750 -p $MY_HOME/plugins && \
+RUN mkdir -m 750 -p $APPS_TARGET && \
+    mkdir -m 750 -p $MY_HOME/plugins && \
     mkdir -m 750 -p $MY_HOME/wordlists && \
     mkdir -m 750 -p $MY_HOME/extensions && \
     mkdir -m 750 -p $MY_HOME/templates && \
