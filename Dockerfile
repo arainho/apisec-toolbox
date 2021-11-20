@@ -1,5 +1,5 @@
 # golang:alpine3.14
-FROM golang@sha256:5ce2785c82a96349131913879a603fc44d9c10d438f61bba84ee6a1ef03f6c6f AS build-env
+FROM docker.io/golang@sha256:5ce2785c82a96349131913879a603fc44d9c10d438f61bba84ee6a1ef03f6c6f AS build-env
 LABEL org.opencontainers.image.authors="github.com/arainho"
 
 ENV MY_USER="appuser"
@@ -211,24 +211,23 @@ RUN git clone --depth=1  https://github.com/TheHackerDev/race-the-web $MY_HOME/r
         cp -av src/main/resources/runnable.sh . && \
         cat runnable.sh ./build/libs/imperva-api-attack-tool.jar > api-attack.sh && \
         chmod +x api-attack.sh && \
-        ln -s $APPS_TARGET/automatic-api-attack-tool/api-attack.sh $MY_HOME/bin/api-attack.sh
-
-#RUN git clone --depth=1 https://github.com/microsoft/restler-fuzzer $APPS_TARGET/restler-fuzzer && \
-#       curl -L -o $APPS_TARGET/restler-fuzzer/dotnet-install.sh https://dot.net/v1/dotnet-install.sh && \
-#       cd $APPS_TARGET/restler-fuzzer && \
-#       chmod u+x ./dotnet-install.sh && \
-#       ./dotnet-install.sh -c 5.0 && \
-#       mkdir -p $APPS_TARGET/restler-fuzzer/restler_bin && \
-#       cd $APPS_TARGET/restler-fuzzer && \
-#       python3 ./build-restler.py --dest_dir $APPS_TARGET/restler-fuzzer/restler_bin && \
-#       ln -s $APPS_TARGET/restler-fuzzer/restler_bin/xxx.py $MY_HOME/bin/restler_bin
-
-RUN git clone --depth=1 https://github.com/ngalongc/openapi_security_scanner $APPS_TARGET/openapi_security_scanner && \
-    cd $APPS_TARGET/openapi_security_scanner && \
-    python3 -m pip install --user -r requirements.txt && \
-    ln -s $APPS_TARGET/openapi_security_scanner/openapi_security_scanner.py  $MY_HOME/bin/openapi_security_scanner.py
-
-RUN git clone --depth=1 https://github.com/nikitastupin/clairvoyance.git $APPS_TARGET/clairvoyance && \
+        ln -s $APPS_TARGET/automatic-api-attack-tool/api-attack.sh $MY_HOME/bin/api-attack.sh && \
+    git clone --depth=1 https://github.com/microsoft/restler-fuzzer $APPS_TARGET/restler-fuzzer && \
+       curl -L -o $APPS_TARGET/restler-fuzzer/dotnet-install.sh https://dot.net/v1/dotnet-install.sh && \
+       cd $APPS_TARGET/restler-fuzzer && \
+       chmod u+x ./dotnet-install.sh && \
+       ./dotnet-install.sh -c 5.0 && \
+       export PATH="$HOME/.dotnet:$PATH" && \
+       mkdir -p $APPS_TARGET/restler-fuzzer/restler_bin && \
+       cd $APPS_TARGET/restler-fuzzer && \
+       python3 -m pip install --user requests applicationinsights && \
+       python3 ./build-restler.py --dest_dir $APPS_TARGET/restler-fuzzer/restler_bin && \
+       ln -s $APPS_TARGET/restler-fuzzer/restler_bin/engine/restler.py $MY_HOME/bin/restler.py && \
+    git clone --depth=1 https://github.com/ngalongc/openapi_security_scanner $APPS_TARGET/openapi_security_scanner && \
+        cd $APPS_TARGET/openapi_security_scanner && \
+        python3 -m pip install --user -r requirements.txt && \
+        ln -s $APPS_TARGET/openapi_security_scanner/openapi_security_scanner.py  $MY_HOME/bin/openapi_security_scanner.py && \
+    git clone --depth=1 https://github.com/nikitastupin/clairvoyance.git $APPS_TARGET/clairvoyance && \
         cd $APPS_TARGET/clairvoyance && \
         python3 -m pip install --user -r requirements.txt && \
     git clone --depth=1 https://github.com/dolevf/graphw00f.git $APPS_TARGET/graphw00f && \
@@ -244,7 +243,7 @@ RUN curl -o $MY_HOME/wordlists/common-api-endpoints-mazen160.txt "https://raw.gi
     curl -o $MY_HOME/wordlists/danielmiessler-SecLists-graphql.txt "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/graphql.txt" && \
     curl -o $MY_HOME/wordlists/kiterunner-swagger-wordlist.txt "https://wordlists-cdn.assetnote.io/data/kiterunner/swagger-wordlist.txt" && \
     curl -o $MY_HOME/wordlists/httparchive_apiroutes_2021_08_28.txt "https://wordlists-cdn.assetnote.io/./data/automated/httparchive_apiroutes_2021_08_28.txt" && \
-    curl -o $MY_HOME/wordlists/fuzzdb-project-common-methods.txt https://github.com/fuzzdb-project/fuzzdb/tree/master/discovery/common-methods && \
+    curl -o $MY_HOME/wordlists/fuzzdb-project-common-methods.txt "https://github.com/fuzzdb-project/fuzzdb/tree/master/discovery/common-methods" && \
     curl -o $MY_HOME/wordlists/routes-large.kite.tar.gz "https://wordlists-cdn.assetnote.io/data/kiterunner/routes-large.kite.tar.gz" && \
         cd $MY_HOME/wordlists && \ 
         tar xvzf routes-large.kite.tar.gz
