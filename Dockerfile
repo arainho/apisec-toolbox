@@ -35,7 +35,8 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache --update libffi-dev python3-dev && \
     apk add --no-cache --update wireshark xxd protoc && \
     apk add --no-cache --update ruby ruby-dev && \
-    apk add --no-cache clang gcc libevent libevent-dev openssl openssl-dev openssl-libs-static cmake wget unzip && \
+    apk add --no-cache libressl-dev openssl openssl-dev openssl-libs-static  && \
+    apk add --no-cache clang gcc make build-base cmake libevent libevent-dev unzip bsd-compat-headers && \
     apk add --no-cache openjdk8-jre gradle && \
     apk add --no-cache bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
