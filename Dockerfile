@@ -7,7 +7,7 @@ ENV MY_GROUP="appgroup"
 ENV MY_HOME="/home/$MY_USER"
 ENV GOPATH="$MY_HOME/go"
 ENV APPS_TARGET="$MY_HOME/apps"
-ENV PATH="$MY_HOME/go/bin:$MY_HOME/.local/bin:$HOME/node_modules/.bin:$HOME/.rbenv/bin:$PATH:$MY_HOME/.cargo/bin:$MY_HOME/.apicheck_manager/bin:$PATH"
+ENV PATH="$MY_HOME/bin:$MY_HOME/go/bin:$MY_HOME/.local/bin:$HOME/node_modules/.bin:$HOME/.rbenv/bin:$PATH:$MY_HOME/.cargo/bin:$MY_HOME/.apicheck_manager/bin:$PATH"
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
