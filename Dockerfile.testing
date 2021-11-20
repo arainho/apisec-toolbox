@@ -77,3 +77,13 @@ RUN python3 -m pip install --upgrade pipenv && \
 #######################################################
 # ENV TOOL_NAME="openapi_security_scanner.py"
 # RUN <add installation commands here>
+
+RUN git clone --depth=1 https://github.com/microsoft/restler-fuzzer $APPS_TARGET/restler-fuzzer && \
+       curl -L -o $APPS_TARGET/restler-fuzzer/dotnet-install.sh https://dot.net/v1/dotnet-install.sh && \
+       cd $APPS_TARGET/restler-fuzzer && \
+       chmod u+x ./dotnet-install.sh && \
+       ./dotnet-install.sh -c 5.0 && \
+       mkdir -p $APPS_TARGET/restler-fuzzer/restler_bin && \
+       cd $APPS_TARGET/restler-fuzzer && \
+       python3 ./build-restler.py --dest_dir $APPS_TARGET/restler-fuzzer/restler_bin && \
+       ln -s $APPS_TARGET/restler-fuzzer/restler_bin/xxx.py $MY_HOME/bin/restler_bin
