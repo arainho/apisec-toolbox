@@ -1,5 +1,5 @@
 # golang:alpine3.14
-FROM golang@sha256:5ce2785c82a96349131913879a603fc44d9c10d438f61bba84ee6a1ef03f6c6f AS build-env
+FROM docker.io/golang@sha256:5ce2785c82a96349131913879a603fc44d9c10d438f61bba84ee6a1ef03f6c6f AS build-env
 LABEL org.opencontainers.image.authors="github.com/arainho"
 
 ENV MY_USER="appuser"
@@ -7,7 +7,7 @@ ENV MY_GROUP="appgroup"
 ENV MY_HOME="/home/$MY_USER"
 ENV GOPATH="$MY_HOME/go"
 ENV APPS_TARGET="$MY_HOME/apps"
-ENV PATH="$MY_HOME/go/bin:$MY_HOME/.local/bin:$MY_HOME/.cargo/bin:$MY_HOME/.apicheck_manager/bin:$PATH"
+ENV PATH="$MY_HOME/go/bin:$MY_HOME/.local/bin:$HOME/node_modules/.bin:$HOME/.rbenv/bin:$PATH:$MY_HOME/.cargo/bin:$MY_HOME/.apicheck_manager/bin:$PATH"
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
@@ -25,11 +25,11 @@ RUN addgroup -g 9999 $MY_GROUP && \
                        ca-certificates coreutils build-base libzip-dev zip && \
     apk add --no-cache --update python2 python3 py3-pip && \
     python2 -m ensurepip && \
-    python2 -m pip install --upgrade pip && \
     unlink /usr/bin/pip && \
     unlink /usr/bin/python && \
     ln -s /usr/bin/pip3 /usr/bin/pip && \
     ln -s /usr/bin/python3 /usr/bin/python && \
+    python2 -m pip install --upgrade pip setuptools && \
     python3 -m pip install --upgrade pip setuptools && \
     apk add --no-cache --update nodejs npm && \
     apk add --no-cache --update libffi-dev python3-dev && \
@@ -38,7 +38,8 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache clang gcc libevent libevent-dev openssl openssl-dev openssl-libs-static cmake wget unzip && \
     apk add --no-cache openjdk8-jre gradle && \
     apk add --no-cache bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
-    apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing
+    apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
+    adduser $MY_USER wireshark
 
 USER $MY_USER
 
@@ -56,12 +57,10 @@ RUN python3 -m pip install --upgrade pipenv && \
     python3 -m pip install --user virtualenv && \
     python2 -m pip install --user virtualenv && \
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
-    export PATH="$HOME/.rbenv/bin:$PATH && \
-    echo export PATH="$HOME/.rbenv/bin:$PATH >> ~/.bashrc && \
     export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH" && \
     echo 'if which ruby >/dev/null && which gem >/dev/null; then PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"; fi' >> ~/.bashrc && \
     npm install yarn && \
-    export PATH="$PATH:$(yarn global bin)" && \
+    export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)" && \
     echo 'if which yarn >/dev/null; then echo export PATH="$PATH:$(yarn global bin)"; fi' >> ~/.bashrc && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
     source $MY_HOME/.cargo/env && \
@@ -87,5 +86,6 @@ RUN git clone --depth=1 https://github.com/microsoft/restler-fuzzer $APPS_TARGET
        export PATH="$HOME/.dotnet:$PATH" && \
        mkdir -p $APPS_TARGET/restler-fuzzer/restler_bin && \
        cd $APPS_TARGET/restler-fuzzer && \
+       python3 -m pip install --user requests applicationinsights && \
        python3 ./build-restler.py --dest_dir $APPS_TARGET/restler-fuzzer/restler_bin && \
-       ln -s $APPS_TARGET/restler-fuzzer/restler_bin/xxx.py $MY_HOME/bin/restler_bin
+       ln -s $APPS_TARGET/restler-fuzzer/restler_bin/engine/restler.py $MY_HOME/bin/restler.py
