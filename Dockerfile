@@ -38,7 +38,8 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache clang gcc libevent libevent-dev openssl openssl-dev openssl-libs-static cmake wget unzip && \
     apk add --no-cache openjdk8-jre gradle && \
     apk add --no-cache bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
-    apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing
+    apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
+    adduser $MY_USER wireshark
 
 USER $MY_USER
 
