@@ -2,6 +2,8 @@
 FROM golang@sha256:5ce2785c82a96349131913879a603fc44d9c10d438f61bba84ee6a1ef03f6c6f
 LABEL org.opencontainers.image.authors="github.com/arainho"
 
+ENV APPS_TARGET /usr/local
+
 # tools in /usr/local/bin/
 # plugins in /usr/share/plugins/
 # wordlists in /usr/share/wordlists/
@@ -10,7 +12,8 @@ LABEL org.opencontainers.image.authors="github.com/arainho"
 # signatures in /usr/share/signatures/
 
 # general setup
-RUN mkdir -p /usr/share/plugins && \
+RUN mkdir -p $APPS_TARGET
+    mkdir -p /usr/share/plugins && \
     mkdir -p /usr/share/wordlists && \
     mkdir -p /usr/share/extensions && \
     mkdir -p /usr/share/templates && \
