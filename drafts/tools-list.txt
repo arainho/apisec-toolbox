@@ -48,17 +48,33 @@ apkleaks
 waybackurls
 gau
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+# other
+apidor
+susanoo
+graphql-path-enum
+protofuzz
+jwt_tool
+jwt-cracker
+jwtcat
+rsa_sig2n
+jwtxploiter
+apicheck-package-manager
+regexploit
+# racepwn (build fail)
+race-the-web
+API_Fuzzer
+shapeshifter
+testssl
+batchql
+GraphQLmap
+CeWL
+bopscrk
+api-attack.sh
+restler.py
+openapi_security_scanner.py
+clairvoyance
+graphw00f
+fuzz-lightyear
+newman
+ciphey
 
