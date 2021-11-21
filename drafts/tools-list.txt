@@ -1,0 +1,64 @@
+# tools list
+
+# secrets
+shhgit
+truffleHog
+gitleaks
+detect-secrets
+git-secrets
+repo-supervisor
+
+# 
+gobuster
+dirsearch
+wadl-dumper
+ffuf
+Amass
+nuclei
+jaeles
+gospider
+arjun
+ParamSpider
+PyJFuzz
+TnT-Fuzzer
+kiterunner
+
+
+# extentions
+wsdl-wizard
+Wsdler
+AuthMatrix
+autorize.git
+auth-analyzer
+
+#
+get-graphql-schema
+
+# traffic analysis
+wireshark
+xxd
+protoc
+mitmproxy
+protobuf_dissector
+
+# android
+apkleaks
+
+# wayback machine
+waybackurls
+gau
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
