@@ -1,10 +1,19 @@
 # TODO's list
 
-## Fix errors
-- [ ] racepwn 
-  - fix RUN lines for [racepwn](https://github.com/racepwn/racepwn)
+## Tools to add
 
-## Next steps 
+### New
+- [ ] sslscan2
+  - dependencies alpine-sdk, perl, zlib-dev, linux-headers, openssl, curl, unzip, git
+  - sslscan docker image [layers](https://hub.docker.com/layers/shamelesscookie/sslscan/latest/images/sha256-5f3dbd82c8d3c8da79887a9c56eb9679b7b191c3019342ac3f441944e895b270?context=explore)
+- [ ] hyperscan
+  - https://github.com/intel/hyperscan  
+
+### With errors
+- [ ] racepwn 
+  - fix errors on 'RUN' lines for [racepwn](https://github.com/racepwn/racepwn)
+
+## Next steps
 - [ ] Create a list of tools installed in 'api-security-toolbox'  
 - [ ] evaluate the proper file for the list (CSV, JSON) ? 
 - [ ] evaluate appropriate languange for building the list (Python, Golang, Other) ?  
