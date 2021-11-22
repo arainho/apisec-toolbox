@@ -57,7 +57,7 @@ RUN mkdir -m 750 -p $APPS_TARGET && \
     mkdir -m 750 -p $MY_HOME/extensions && \
     mkdir -m 750 -p $MY_HOME/templates && \
     mkdir -m 750 -p $MY_HOME/signatures && \
-    mkdir -m 750 -p $APPS_TARGET/usr/share/man/man1
+    mkdir -m 750 -p $MY_HOME/share/man/man1
 
 # virtual envs, pkg's and versions managers
 RUN python3 -m pip install --upgrade pipenv && \
@@ -87,9 +87,7 @@ RUN python3 -m pip install --upgrade pipenv && \
 ENV TOOL_NAME="sslscan"
 RUN git clone --depth=1 https://github.com/rbsec/sslscan $APPS_TARGET/sslscan && \
         cd $APPS_TARGET/sslscan && \
-        DESTDIR=$APPS_TARGET make static && \
-        DESTDIR=$APPS_TARGET make install && \
-        adduser -D -g '' sslscan && \
-        ls
+        PREFIX=$MY_HOME make static && \
+        PREFIX=$MY_HOME make install
 
 CMD ["/bin/bash"]
