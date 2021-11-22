@@ -57,7 +57,7 @@ RUN mkdir -m 750 -p $APPS_TARGET && \
     mkdir -m 750 -p $MY_HOME/extensions && \
     mkdir -m 750 -p $MY_HOME/templates && \
     mkdir -m 750 -p $MY_HOME/signatures && \
-    mkdir -m 750 -p $APPS_TARGET/usr/share/man/man1
+    mkdir -m 750 -p $MY_HOME/share/man/man1
 
 # virtual envs, pkg's and versions managers
 RUN python3 -m pip install --upgrade pipenv && \
