@@ -86,8 +86,8 @@ RUN python3 -m pip install --upgrade pipenv && \
 ENV TOOL_NAME="sslscan"
 RUN git clone --depth=1 https://github.com/rbsec/sslscan $APPS_TARGET/sslscan && \
         cd $APPS_TARGET/sslscan && \
-        make static && \
-        make install && \
+        DESTDIR=$APPS_TARGET make static && \
+        DESTDIR=$APPS_TARGET make install && \
         adduser -D -g '' sslscan && \
         ls
 
