@@ -32,17 +32,17 @@ RUN addgroup -g 9999 $MY_GROUP && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     python2 -m pip install --upgrade pip setuptools && \
     python3 -m pip install --upgrade pip setuptools && \
-    apk add --no-cache --update nodejs npm && \
-    apk add --no-cache --update libffi-dev python3-dev && \
-    apk add --no-cache --update wireshark xxd protoc && \
-    apk add --no-cache --update perl && \
-    apk add --no-cache --update ruby ruby-dev && \
-    apk add --no-cache --update openssl openssl-dev openssl-libs-static  && \
-    apk add --no-cache --update alpine-sdk clang gcc make build-base cmake && \
-    apk add --no-cache --update bsd-compat-headers linux-headers && \
-    apk add --no-cache --update zlib-dev libevent libevent-dev && \
-    apk add --no-cache --update openjdk8-jre gradle && \
-    apk add --no-cache --update bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
+    apk add --no-cache --update nodejs npm \
+                                libffi-dev python3-dev \
+                                wireshark xxd protoc \
+                                perl \
+                                ruby ruby-dev \
+                                openssl openssl-dev openssl-libs-static \
+                                alpine-sdk clang gcc make build-base cmake \
+                                bsd-compat-headers linux-headers \
+                                zlib-dev libevent libevent-dev \
+                                openjdk8-jre gradle \
+                                bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
     adduser $MY_USER wireshark
     
@@ -111,12 +111,7 @@ RUN go install github.com/OJ/gobuster/v3@latest && \
         python3 setup.py install --prefix=$MY_HOME/.local && \
     git clone --depth=1 https://github.com/Teebytes/TnT-Fuzzer.git $APPS_TARGET/TnT-Fuzzer && \
         cd $APPS_TARGET/TnT-Fuzzer && \
-        python3 setup.py install --prefix=$MY_HOME/.local && \
-    git clone --depth=1 https://github.com/assetnote/kiterunner $APPS_TARGET/kiterunner && \
-        cd $APPS_TARGET/kiterunner && \
-        make build && \
-        ln -s $(pwd)/dist/kr $MY_HOME/bin/kr && \
-        ln -s $APPS_TARGET/kiterunner/api-signatures $MY_HOME/signatures/kiterunner-api-signatures
+        python3 setup.py install --prefix=$MY_HOME/.local
 
 # burp extentions or utilities
 RUN cd $MY_HOME/extensions && \
@@ -242,6 +237,10 @@ RUN git clone --depth=1  https://github.com/TheHackerDev/race-the-web $MY_HOME/r
     python3 -m pip install --user fuzz-lightyear && \
     npm install newman && \
     python3 -m pip install --user --upgrade ciphey
+    git clone --depth=1 https://github.com/rbsec/sslscan $APPS_TARGET/sslscan && \
+        cd $APPS_TARGET/sslscan && \
+        PREFIX=$MY_HOME make static && \
+        PREFIX=$MY_HOME make install
 
 # wordlists
 RUN curl -o $MY_HOME/wordlists/common-api-endpoints-mazen160.txt "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common-api-endpoints-mazen160.txt"RUN curl -o $MY_HOME/wordlists/yassineaboukir-3203-common-api-endpoints.txt "https://gist.githubusercontent.com/yassineaboukir/8e12adefbd505ef704674ad6ad48743d/raw/3ea2b7175f2fcf8e6de835c72cb2b2048f73f847/List%2520of%2520API%2520endpoints%2520&%2520objects"  && \
