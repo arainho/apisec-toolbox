@@ -42,7 +42,7 @@ RUN addgroup -g 9999 $MY_GROUP && \
                                 bsd-compat-headers linux-headers \
                                 zlib-dev libevent libevent-dev \
                                 openjdk8-jre gradle \
-                                bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib \
+                                bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
     adduser $MY_USER wireshark
     
