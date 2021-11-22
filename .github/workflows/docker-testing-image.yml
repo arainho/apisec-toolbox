@@ -38,5 +38,5 @@ jobs:
         export TOOL_NAME=$(grep "^ENV TOOL_NAME=" Dockerfile.testing | awk -F "=\"" '{print $2}' | cut -d "\"" -f1)
         docker run --rm \
           api-security-toolbox:testing \
-          which "$TOOL_NAME" || type "$TOOL_NAME" || find . -type f -name "$TOOL_NAME")
+          which "$TOOL_NAME" || type "$TOOL_NAME" || find . -type f -name "$TOOL_NAME"
 
