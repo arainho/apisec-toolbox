@@ -23,7 +23,7 @@ RUN addgroup -g 9999 $MY_GROUP && \
                        bind-tools openssh git \
                        mandoc man-pages less less-doc \
                        netcat-openbsd curl wget httpie nmap \
-                       ca-certificates coreutils build-base libzip-dev zip && \
+                       ca-certificates coreutils libzip-dev zip unzip && \
     apk add --no-cache --update python2 python3 py3-pip && \
     python2 -m ensurepip && \
     unlink /usr/bin/pip && \
@@ -35,13 +35,17 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache --update nodejs npm && \
     apk add --no-cache --update libffi-dev python3-dev && \
     apk add --no-cache --update wireshark xxd protoc && \
+    apk add --no-cache --update perl && \
     apk add --no-cache --update ruby ruby-dev && \
-    apk add --no-cache openssl openssl-dev openssl-libs-static  && \
-    apk add --no-cache alpine-sdk clang gcc make build-base cmake libevent libevent-dev unzip bsd-compat-headers && \
-    apk add --no-cache openjdk8-jre gradle && \
-    apk add --no-cache bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
+    apk add --no-cache --update openssl openssl-dev openssl-libs-static  && \
+    apk add --no-cache --update alpine-sdk clang gcc make build-base cmake && \
+    apk add --no-cache --update bsd-compat-headers linux-headers && \
+    apk add --no-cache --update zlib-dev libevent libevent-dev && \
+    apk add --no-cache --update openjdk8-jre gradle && \
+    apk add --no-cache --update bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
     adduser $MY_USER wireshark
+    
 
 USER $MY_USER
 
@@ -52,7 +56,8 @@ RUN mkdir -m 750 -p $APPS_TARGET && \
     mkdir -m 750 -p $MY_HOME/wordlists && \
     mkdir -m 750 -p $MY_HOME/extensions && \
     mkdir -m 750 -p $MY_HOME/templates && \
-    mkdir -m 750 -p $MY_HOME/signatures
+    mkdir -m 750 -p $MY_HOME/signatures && \
+    mkdir -m 750 -p $APPS_TARGET/usr/share/man/man1
 
 # virtual envs, pkg's and versions managers
 RUN python3 -m pip install --upgrade pipenv && \
