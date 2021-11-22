@@ -84,10 +84,11 @@ RUN python3 -m pip install --upgrade pipenv && \
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
 
-ENV TOOL_NAME="sslscan"
-RUN git clone --depth=1 https://github.com/rbsec/sslscan $APPS_TARGET/sslscan && \
-        cd $APPS_TARGET/sslscan && \
-        PREFIX=$MY_HOME make static && \
-        PREFIX=$MY_HOME make install
+ENV TOOL_NAME="kr"
+RUN     git clone --depth=1 https://github.com/assetnote/kiterunner $APPS_TARGET/kiterunner && \
+        cd $APPS_TARGET/kiterunner && \
+        make build && \
+        ln -s $(pwd)/dist/kr $MY_HOME/bin/kr && \
+        ln -s $APPS_TARGET/kiterunner/api-signatures $MY_HOME/signatures/kiterunner-api-signatures
 
 CMD ["/bin/bash"]
