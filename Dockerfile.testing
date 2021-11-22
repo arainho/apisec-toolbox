@@ -35,11 +35,14 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache --update nodejs npm && \
     apk add --no-cache --update libffi-dev python3-dev && \
     apk add --no-cache --update wireshark xxd protoc && \
+    apk add --no-cache --update perl && \
     apk add --no-cache --update ruby ruby-dev && \
-    apk add --no-cache openssl openssl-dev openssl-libs-static  && \
-    apk add --no-cache alpine-sdk clang gcc make build-base cmake libevent libevent-dev unzip bsd-compat-headers && \
-    apk add --no-cache openjdk8-jre gradle && \
-    apk add --no-cache bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
+    apk add --no-cache --update openssl openssl-dev openssl-libs-static  && \
+    apk add --no-cache --update alpine-sdk clang gcc make build-base cmake unzip && \
+    apk add --no-cache --update bsd-compat-headers linux-headers && \
+    apk add --no-cache --update zlib-dev libevent libevent-dev && \
+    apk add --no-cache --update openjdk8-jre gradle && \
+    apk add --no-cache --update bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
     adduser $MY_USER wireshark
     
@@ -80,9 +83,12 @@ RUN python3 -m pip install --upgrade pipenv && \
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
 
-ENV TOOL_NAME="racepwn"
-RUN git clone --depth=1 https://github.com/racepwn/racepwn $APPS_TARGET/racepwn && \
-        cd $APPS_TARGET/racepwn && \
-        ./build.sh
+ENV TOOL_NAME="sslscan"
+RUN git clone --depth=1 https://github.com/rbsec/sslscan $APPS_TARGET/sslscan && \
+        cd $APPS_TARGET/sslscan && \
+        make static && \
+        make install && \
+        adduser -D -g '' sslscan && \
+        ls
 
 CMD ["/bin/bash"]
