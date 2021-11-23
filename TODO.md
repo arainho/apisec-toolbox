@@ -3,9 +3,6 @@
 ## Tools to add
 
 ### New
-- [ ] sslscan2
-  - dependencies alpine-sdk, perl, zlib-dev, linux-headers, openssl, curl, unzip, git
-  - sslscan docker image [layers](https://hub.docker.com/layers/shamelesscookie/sslscan/latest/images/sha256-5f3dbd82c8d3c8da79887a9c56eb9679b7b191c3019342ac3f441944e895b270?context=explore)
 - [ ] hyperscan
   - https://github.com/intel/hyperscan  
 
@@ -27,7 +24,10 @@ These tools are included in the 'api-security-toolbox' image
       - fix RUN lines for [openapi_security_scanner](https://github.com/ngalongc/openapi_security_scanner)
 - [x] restler-fuzzer
    - fix RUN lines for [restler-fuzzer](https://github.com/microsoft/restler-fuzzer)
- 
+- [x] sslscan2
+  - dependencies alpine-sdk, perl, zlib-dev, linux-headers, openssl, curl, unzip, git
+  - sslscan docker image [layers](https://hub.docker.com/layers/shamelesscookie/sslscan/latest/images/sha256-5f3dbd82c8d3c8da79887a9c56eb9679b7b191c3019342ac3f441944e895b270?context=explore)
+
 These tools are only available through docker-compose in [utils](/utils) folder
 - [x] [hoppscotch](https://github.com/hoppscotch/hoppscotch), an Open source API development ecosystem called.  
 - [x] [CyberChef](https://github.com/gchq/CyberChef), the Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis.   
