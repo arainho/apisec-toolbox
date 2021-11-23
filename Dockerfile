@@ -260,10 +260,13 @@ RUN curl -o $MY_HOME/wordlists/common-api-endpoints-mazen160.txt "https://raw.gi
         tar xvzf routes-large.kite.tar.gz
 
 # titanic wordlists repositories  (uncomment only if needed)
-#RUN git clone --depth=1 https://github.com/danielmiessler/SecLists.git $MY_HOME/wordlists/danielmiessler-seclists && \      # (1.9G)
-#    mkdir -p $MY_HOME/wordlists/assetnote-io && cd $MY_HOME/wordlists/assetnote-io && \                                     # (3.3G)
-#        wget -r --no-parent -R "index.html*" https://wordlists-cdn.assetnote.io/data/ -nH && \
-#    git clone --depth=1  https://github.com/assetnote/commonspeak2-wordlists.git $MY_HOME/wordlists/commonspeak2-wordlists  # (156M)
+# RUN git clone --depth=1 https://github.com/danielmiessler/SecLists.git $MY_HOME/wordlists/danielmiessler-seclists && \      # (1.9G)
+#     mkdir -p $MY_HOME/wordlists/assetnote-io && cd $MY_HOME/wordlists/assetnote-io && \                                     # (3.3G)
+#         wget -r --no-parent -R "index.html*" https://wordlists-cdn.assetnote.io/data/ -nH && \
+#     git clone --depth=1  https://github.com/assetnote/commonspeak2-wordlists.git $MY_HOME/wordlists/commonspeak2-wordlists  # (156M)
+
+# exploit database repository (uncomment only if needed)
+# RUN git clone --depth=1 https://github.com/offensive-security/exploitdb.git $MY_HOME/exploits                               # (331M)
 
 
 
