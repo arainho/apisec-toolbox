@@ -111,7 +111,12 @@ RUN go install github.com/OJ/gobuster/v3@latest && \
         python3 setup.py install --prefix=$MY_HOME/.local && \
     git clone --depth=1 https://github.com/Teebytes/TnT-Fuzzer.git $APPS_TARGET/TnT-Fuzzer && \
         cd $APPS_TARGET/TnT-Fuzzer && \
-        python3 setup.py install --prefix=$MY_HOME/.local
+        python3 setup.py install --prefix=$MY_HOME/.local && \
+    git clone --depth=1 https://github.com/assetnote/kiterunner $APPS_TARGET/kiterunner && \
+        cd $APPS_TARGET/kiterunner && \
+        make build && \
+        ln -s $(pwd)/dist/kr $MY_HOME/bin/kr && \
+        ln -s $APPS_TARGET/kiterunner/api-signatures $MY_HOME/signatures/kiterunner-api-signatures
 
 # burp extentions or utilities
 RUN cd $MY_HOME/extensions && \
@@ -236,7 +241,7 @@ RUN git clone --depth=1  https://github.com/TheHackerDev/race-the-web $MY_HOME/r
         ln -s $APPS_TARGET/graphw00f/main.py $MY_HOME/bin/graphw00f.py && \
     python3 -m pip install --user fuzz-lightyear && \
     npm install newman && \
-    python3 -m pip install --user --upgrade ciphey
+    python3 -m pip install --user --upgrade ciphey && \
     git clone --depth=1 https://github.com/rbsec/sslscan $APPS_TARGET/sslscan && \
         cd $APPS_TARGET/sslscan && \
         PREFIX=$MY_HOME make static && \
