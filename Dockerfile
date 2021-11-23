@@ -102,17 +102,17 @@ RUN go install github.com/OJ/gobuster/v3@latest && \
     GO111MODULE=on go get -u -v github.com/jaeles-project/jaeles && \
         GO111MODULE=on go get -u github.com/jaeles-project/gospider && \
         git clone --depth=1 https://github.com/jaeles-project/jaeles-signatures.git $MY_HOME/signatures/jaeles-signatures && \
-    python3 -m pip install --user --upgrade arjun && \
-    git clone --depth=1 https://github.com/devanshbatham/ParamSpider $APPS_TARGET/ParamSpider && \
+    python3 -m pip install --user --upgrade arjun
+RUN git clone --depth=1 https://github.com/devanshbatham/ParamSpider $APPS_TARGET/ParamSpider && \
         cd $APPS_TARGET/ParamSpider && \
-        python3 -m pip install --user -r requirements.txt && \
-    git clone --depth=1 https://github.com/mseclab/PyJFuzz.git $APPS_TARGET/PyJFuzz && \
+        python3 -m pip install --user -r requirements.txt
+RUN git clone --depth=1 https://github.com/mseclab/PyJFuzz.git $APPS_TARGET/PyJFuzz && \
         cd $APPS_TARGET/PyJFuzz && \
-        python3 setup.py install --prefix=$MY_HOME/.local && \
-    git clone --depth=1 https://github.com/Teebytes/TnT-Fuzzer.git $APPS_TARGET/TnT-Fuzzer && \
+        python3 setup.py install --prefix=$MY_HOME/.local
+RUN git clone --depth=1 https://github.com/Teebytes/TnT-Fuzzer.git $APPS_TARGET/TnT-Fuzzer && \
         cd $APPS_TARGET/TnT-Fuzzer && \
-        python3 setup.py install --prefix=$MY_HOME/.local && \
-    git clone --depth=1 https://github.com/assetnote/kiterunner $APPS_TARGET/kiterunner && \
+        python3 setup.py install --prefix=$MY_HOME/.local
+RUN git clone --depth=1 https://github.com/assetnote/kiterunner $APPS_TARGET/kiterunner && \
         cd $APPS_TARGET/kiterunner && \
         make build && \
         ln -s $(pwd)/dist/kr $MY_HOME/bin/kr && \
