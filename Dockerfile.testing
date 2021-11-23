@@ -14,6 +14,11 @@ ENV PYTHONUNBUFFERED=1
 # general
 RUN addgroup -g 9999 $MY_GROUP && \
     adduser -u 9999 -D -G $MY_GROUP -h $MY_HOME $MY_USER && \
+    cat > /etc/apk/repositories << EOF; $(echo)
+http://dl-cdn.alpinelinux.org/alpine/v$(cat /etc/alpine-release | cut -d'.' -f1,2)/main
+http://dl-cdn.alpinelinux.org/alpine/v$(cat /etc/alpine-release | cut -d'.' -f1,2)/community
+http://dl-cdn.alpinelinux.org/alpine/edge/testing
+EOF && \
     apk update && \
     apk add --no-cache sudo && \
     adduser $MY_USER wheel && \
