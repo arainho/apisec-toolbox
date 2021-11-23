@@ -17,8 +17,8 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk update && \
     apk add --no-cache sudo && \
     adduser $MY_USER wheel && \
-    echo "$MY_USER ALL=(ALL) ALL" > /etc/sudoers.d/$MY_USER && \
-    chmod 0440 /etc/sudoers.d/$MY_USER && \
+    echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel && \
+    chmod 0440 /etc/sudoers.d/wheel && \
     apk add --no-cache bash zsh fish \
                        bind-tools openssh git \
                        mandoc man-pages less less-doc \
