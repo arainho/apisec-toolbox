@@ -85,10 +85,45 @@ RUN python3 -m pip install --upgrade pipenv && \
 # RUN <add installation commands here>
 
 ENV TOOL_NAME="kr"
-RUN     git clone --depth=1 https://github.com/assetnote/kiterunner $APPS_TARGET/kiterunner && \
+# testing enumeration tools
+RUN go install github.com/OJ/gobuster/v3@latest && \
+    python3 -m pip install --user dirsearch && \
+    go get -u -v github.com/dwisiswant0/wadl-dumper && \
+    go get -u -v github.com/ffuf/ffuf && \
+    git clone --depth=1 https://github.com/OWASP/Amass.git $APPS_TARGET/Amass && \
+        cd $APPS_TARGET/Amass && \
+        go install -v ./... && \
+    go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest && \
+        git clone --depth=1 https://github.com/projectdiscovery/nuclei-templates.git $MY_HOME/templates/nuclei-templates && \
+    GO111MODULE=on go get -u -v github.com/jaeles-project/jaeles && \
+        GO111MODULE=on go get -u github.com/jaeles-project/gospider && \
+        git clone --depth=1 https://github.com/jaeles-project/jaeles-signatures.git $MY_HOME/signatures/jaeles-signatures && \
+    python3 -m pip install --user --upgrade arjun && \
+    git clone --depth=1 https://github.com/devanshbatham/ParamSpider $APPS_TARGET/ParamSpider && \
+        cd $APPS_TARGET/ParamSpider && \
+        python3 -m pip install --user -r requirements.txt && \
+    git clone --depth=1 https://github.com/mseclab/PyJFuzz.git $APPS_TARGET/PyJFuzz && \
+        cd $APPS_TARGET/PyJFuzz && \
+        python3 setup.py install --prefix=$MY_HOME/.local && \
+    git clone --depth=1 https://github.com/Teebytes/TnT-Fuzzer.git $APPS_TARGET/TnT-Fuzzer && \
+        cd $APPS_TARGET/TnT-Fuzzer && \
+        python3 setup.py install --prefix=$MY_HOME/.local && \
+    git clone --depth=1 https://github.com/assetnote/kiterunner $APPS_TARGET/kiterunner && \
         cd $APPS_TARGET/kiterunner && \
         make build && \
         ln -s $(pwd)/dist/kr $MY_HOME/bin/kr && \
         ln -s $APPS_TARGET/kiterunner/api-signatures $MY_HOME/signatures/kiterunner-api-signatures
+
+# testing burp extentions or utilities
+RUN cd $MY_HOME/extensions && \
+    git clone --depth=1 https://github.com/portswigger/wsdl-wizard && \
+    git clone --depth=1 https://github.com/NetSPI/Wsdler && \
+    git clone --depth=1  https://github.com/SecurityInnovation/AuthMatrix.git && \
+    git clone --depth=1 https://github.com/PortSwigger/autorize.git && \
+    git clone --depth=1 https://github.com/portswigger/auth-analyzer && \
+    git clone --depth=1 https://github.com/doyensec/inql && \
+    git clone --depth=1 https://github.com/wallarm/jwt-heartbreaker.git && \
+    git clone --depth=1 https://github.com/PortSwigger/json-web-token-attacker.git && \
+    pip3 install json2paths
 
 CMD ["/bin/bash"]
