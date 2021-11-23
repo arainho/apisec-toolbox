@@ -17,8 +17,8 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk update && \
     apk add --no-cache sudo && \
     adduser $MY_USER wheel && \
-    echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel && \
-    chmod 0440 /etc/sudoers.d/wheel && \
+    echo "$MY_USER ALL=(ALL) ALL" > /etc/sudoers.d/$MY_USER && \
+    chmod 0440 /etc/sudoers.d/$MY_USER && \
     apk add --no-cache bash zsh fish \
                        bind-tools openssh git \
                        mandoc man-pages less less-doc \
@@ -32,17 +32,17 @@ RUN addgroup -g 9999 $MY_GROUP && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     python2 -m pip install --upgrade pip setuptools && \
     python3 -m pip install --upgrade pip setuptools && \
-    apk add --no-cache --update nodejs npm \
-                                libffi-dev python3-dev \
-                                wireshark xxd protoc \
-                                perl \
-                                ruby ruby-dev \
-                                openssl openssl-dev openssl-libs-static \
-                                alpine-sdk clang gcc make build-base cmake \
-                                bsd-compat-headers linux-headers \
-                                zlib-dev libevent libevent-dev \
-                                openjdk8-jre gradle \
-                                bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
+    apk add --no-cache --update nodejs npm && \
+    apk add --no-cache --update libffi-dev python3-dev && \
+    apk add --no-cache --update wireshark xxd protoc && \
+    apk add --no-cache --update perl && \
+    apk add --no-cache --update ruby ruby-dev && \
+    apk add --no-cache --update openssl openssl-dev openssl-libs-static  && \
+    apk add --no-cache --update alpine-sdk clang gcc make build-base cmake && \
+    apk add --no-cache --update bsd-compat-headers linux-headers && \
+    apk add --no-cache --update zlib-dev libevent libevent-dev && \
+    apk add --no-cache --update openjdk8-jre gradle && \
+    apk add --no-cache --update bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
     adduser $MY_USER wireshark
     
