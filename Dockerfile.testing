@@ -107,7 +107,7 @@ RUN go install github.com/OJ/gobuster/v3@latest && \
         python3 setup.py install --prefix=$MY_HOME/.local && \
     git clone --depth=1 https://github.com/Teebytes/TnT-Fuzzer.git $APPS_TARGET/TnT-Fuzzer && \
         cd $APPS_TARGET/TnT-Fuzzer && \
-        python3 setup.py install --prefix=$MY_HOME/.local && \
+        python3 setup.py install --prefix=$MY_HOME/.local
 
 
 # testing burp extentions or utilities
