@@ -91,7 +91,6 @@ RUN cd $APPS_TARGET && \
     cd $APPS_TARGET/hs && \
     export MAKEFLAGS=-j$(nproc) && \
     cmake -DBUILD_STATIC_AND_SHARED=1 $APPS_TARGET/hyperscan && \
-    echo "/usr/local/lib" | tee --append /etc/ld.so.conf.d/usrlocal.conf && \
     cd $APPS_TARGET/hs && make && make install
 
 CMD ["/bin/bash"]
