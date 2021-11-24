@@ -49,7 +49,7 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
     adduser $MY_USER wireshark
     
-RUN apk install hyperscan 
+RUN apk add hyperscan 
 
 USER $MY_USER
 
