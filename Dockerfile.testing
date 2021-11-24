@@ -49,7 +49,6 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
     adduser $MY_USER wireshark
     
-RUN apk add hyperscan 
 
 USER $MY_USER
 
@@ -89,5 +88,13 @@ RUN python3 -m pip install --upgrade pipenv && \
 # RUN <add installation commands here>
 
 ENV TOOL_NAME="hyperscan"
+RUN cd $APPS_TARGET && \
+    git clone https://github.com/intel/hyperscan.git && \
+    mkdir $APPS_TARGET/hs && \
+    cd $APPS_TARGET/hs && \
+    export MAKEFLAGS=-j$(nproc) && \
+    cmake -DBUILD_STATIC_AND_SHARED=1 $APPS_TARGET/hyperscan && \
+    echo "/usr/local/lib" | tee --append /etc/ld.so.conf.d/usrlocal.conf && \
+    cd $APPS_TARGET/hs && make && make install
 
 CMD ["/bin/bash"]
