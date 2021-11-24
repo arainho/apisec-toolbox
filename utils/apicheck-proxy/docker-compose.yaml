@@ -1,0 +1,10 @@
+version: '3'
+services:
+  apicheck-proxy:
+    image: bbvalabs/apicheck-proxy
+    environment:
+      - APICHECK_PROXY_LISTEN_ADDR=0.0.0.0
+      - APICHECK_PROXY_LISTEN_PORT=9090
+      - APICHECK_PROXY_ALLOWED_HOST=localhost
+    ports:
+      - "9090:9090"
