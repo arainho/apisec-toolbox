@@ -87,11 +87,11 @@ RUN python3 -m pip install --upgrade pipenv && \
 
 RUN cd $APPS_TARGET && \
     git clone --depth=1 https://github.com/intel/hyperscan.git && \
-    mkdir /usr/local/include/hs && \
-    cd /usr/local/include/hs && \
+    mkdir $APPS_TARGET/hs && \
+    cd $APPS_TARGET/hs && \
     export MAKEFLAGS=-j$(nproc) && \
-    cmake -DBUILD_STATIC_AND_SHARED=1 /usr/local/include/hyperscan && \
+    cmake -DBUILD_STATIC_AND_SHARED=1 $APPS_TARGET/hyperscan && \
     echo "/usr/local/lib" | tee --append /etc/ld.so.conf.d/usrlocal.conf && \
-    cd /usr/local/include/hs && make && make install
+    cd $APPS_TARGET/hs && make && make install
 
 CMD ["/bin/bash"]
