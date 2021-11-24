@@ -32,6 +32,6 @@ These tools are only available through docker-compose in [utils](/utils) folder
 - [x] [hoppscotch](https://github.com/hoppscotch/hoppscotch), an Open source API development ecosystem called.  
 - [x] [CyberChef](https://github.com/gchq/CyberChef), the Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis.   
 - [x] [reconmap](https://github.com/reconmap/reconmap), a VAPT (vulnerability assessment and penetration testing) automation and reporting platform.
-
+- [x] [zaproxy](https://github.com/zaproxy/zaproxy), the OWASP Zed Attack Proxy (ZAP) can help you automatically find security vulnerabilities in your web applications while you are developing and testing your applications.
 
  
