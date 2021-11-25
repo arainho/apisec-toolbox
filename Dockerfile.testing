@@ -85,14 +85,4 @@ RUN python3 -m pip install --upgrade pipenv && \
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
 
-RUN cd $APPS_TARGET && \
-    git clone --depth=1 https://github.com/intel/hyperscan.git && \
-    mkdir $APPS_TARGET/hs && \
-    cd $APPS_TARGET/hs && \
-    export MAKEFLAGS=-j$(nproc) && \
-    cmake -DBUILD_STATIC_AND_SHARED=1 $APPS_TARGET/hyperscan && \
-    cd $APPS_TARGET/hs && \
-    PREFIX=$MY_HOME make && \
-    PREFIX=$MY_HOME make install
-
 CMD ["/bin/bash"]
