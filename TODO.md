@@ -3,8 +3,9 @@
 ## Tools to add
 
 ### New
-- [ ] hyperscan
-  - https://github.com/intel/hyperscan  
+- [ ] [hyperscan](https://github.com/intel/hyperscan)
+- [ ] [httpX](https://github.com/projectdiscovery/httpx)
+- [ ] [proxify](https://github.com/projectdiscovery/proxify)
 
 ### With errors
 - [ ] racepwn 
