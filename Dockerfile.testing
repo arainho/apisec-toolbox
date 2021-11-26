@@ -85,4 +85,7 @@ RUN python3 -m pip install --upgrade pipenv && \
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
 
+ENV TOOL_NAME="httpx"
+RUN go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+
 CMD ["/bin/bash"]
