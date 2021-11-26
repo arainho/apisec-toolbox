@@ -93,4 +93,14 @@ RUN go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 #ENV TOOL_NAME="proxify"
 #RUN go install -v github.com/projectdiscovery/proxify/cmd/proxify@latest
 
+# Tool3 to add
+ENV TOOL_NAME="dnsx"
+RUN go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+
+# Tool4 to add
+# ENV TOOL_NAME="naabu"
+# RUN apk add libpcap-dev  # install as root
+# RUN go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+
+
 CMD ["/bin/bash"]
