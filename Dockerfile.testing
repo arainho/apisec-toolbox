@@ -85,7 +85,12 @@ RUN python3 -m pip install --upgrade pipenv && \
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
 
-ENV TOOL_NAME="httpx"
-RUN go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+# Tool1 to add
+# ENV TOOL_NAME="httpx"
+# RUN go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+
+#Tool2 to add
+ENV TOOL_NAME="proxify"
+RUN go install -v github.com/projectdiscovery/proxify/cmd/proxify@latest
 
 CMD ["/bin/bash"]
