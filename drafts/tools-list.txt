@@ -77,4 +77,5 @@ graphw00f
 fuzz-lightyear
 newman
 ciphey
+sslscan
 
