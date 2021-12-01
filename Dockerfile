@@ -43,6 +43,7 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache --update zlib-dev libevent libevent-dev && \
     apk add --no-cache --update openjdk8-jre gradle && \
     apk add --no-cache --update bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
+    apk add --no-cache --update ragel boost-dev pkgconfig libpcap-dev && \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
     adduser $MY_USER wireshark
     
@@ -249,6 +250,7 @@ RUN git clone --depth=1  https://github.com/TheHackerDev/race-the-web $MY_HOME/r
     go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
     go install -v github.com/projectdiscovery/proxify/cmd/proxify@latest
     go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+    go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
 
 
 # wordlists
@@ -283,7 +285,7 @@ ENV MY_GROUP="appgroup"
 ENV MY_HOME="/home/$MY_USER"
 ENV GOPATH="$MY_HOME/go"
 ENV APPS_TARGET="$MY_HOME/apps"
-ENV PATH="$MY_HOME/go/bin:$MY_HOME/.local/bin:$HOME/node_modules/.bin:$HOME/.rbenv/bin:$PATH:$MY_HOME/.cargo/bin:$MY_HOME/.apicheck_manager/bin:$PATH"
+ENV PATH="$MY_HOME/bin:$MY_HOME/go/bin:$MY_HOME/.local/bin:$HOME/node_modules/.bin:$HOME/.rbenv/bin:$PATH:$MY_HOME/.cargo/bin:$MY_HOME/.apicheck_manager/bin:$PATH"
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
@@ -292,12 +294,13 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk update && \
     apk add --no-cache sudo && \
     adduser $MY_USER wheel && \
-    echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel && \
+    echo "$MY_USER ALL=(ALL) ALL" > /etc/sudoers.d/$MY_USER && \
+    chmod 0440 /etc/sudoers.d/$MY_USER && \
     apk add --no-cache bash zsh fish \
                        bind-tools openssh git \
                        mandoc man-pages less less-doc \
                        netcat-openbsd curl wget httpie nmap \
-                       ca-certificates coreutils build-base libzip-dev zip && \
+                       ca-certificates coreutils libzip-dev zip unzip && \
     apk add --no-cache --update python2 python3 py3-pip && \
     python2 -m ensurepip && \
     unlink /usr/bin/pip && \
@@ -309,20 +312,29 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache --update nodejs npm && \
     apk add --no-cache --update libffi-dev python3-dev && \
     apk add --no-cache --update wireshark xxd protoc && \
+    apk add --no-cache --update perl && \
     apk add --no-cache --update ruby ruby-dev && \
-    apk add --no-cache clang gcc libevent libevent-dev openssl openssl-dev openssl-libs-static cmake wget unzip && \
-    apk add --no-cache openjdk8-jre gradle && \
-    apk add --no-cache bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
-    apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing
+    apk add --no-cache --update openssl openssl-dev openssl-libs-static  && \
+    apk add --no-cache --update alpine-sdk clang gcc make build-base cmake && \
+    apk add --no-cache --update bsd-compat-headers linux-headers && \
+    apk add --no-cache --update zlib-dev libevent libevent-dev && \
+    apk add --no-cache --update openjdk8-jre gradle && \
+    apk add --no-cache --update bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
+    apk add --no-cache --update ragel boost-dev pkgconfig libpcap-dev && \
+    apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
+    adduser $MY_USER wireshark
 
 USER $MY_USER
 
+# workdir
 RUN mkdir -m 750 -p $APPS_TARGET && \
+    mkdir -m 750 -p $MY_HOME/bin && \
     mkdir -m 750 -p $MY_HOME/plugins && \
     mkdir -m 750 -p $MY_HOME/wordlists && \
     mkdir -m 750 -p $MY_HOME/extensions && \
     mkdir -m 750 -p $MY_HOME/templates && \
-    mkdir -m 750 -p $MY_HOME/signatures
+    mkdir -m 750 -p $MY_HOME/signatures && \
+    mkdir -m 750 -p $MY_HOME/share/man/man1
 
 # virtual envs, pkg's and versions managers
 RUN python3 -m pip install --upgrade pipenv && \
@@ -333,7 +345,7 @@ RUN python3 -m pip install --upgrade pipenv && \
     echo 'if which ruby >/dev/null && which gem >/dev/null; then PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"; fi' >> ~/.bashrc && \
     npm install yarn && \
     export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)" && \
-    echo 'if which yarn >/dev/null; then echo export PATH="$PATH:$(yarn global bin)"; fi' >> ~/.bashrc && \
+    echo 'if which yarn >/dev/null; then echo export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)"; fi' >> ~/.bashrc && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
     source $MY_HOME/.cargo/env && \
     rustup component add rustfmt && \
