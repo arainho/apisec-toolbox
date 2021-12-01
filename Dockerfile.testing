@@ -46,7 +46,8 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
     adduser $MY_USER wireshark
     
-RUN apk add --no-cache  ragel boost-dev pkgconfig
+RUN apk add --no-cache ragel boost-dev pkgconfig
+RUN apk add --no-cache libpcap-dev
 
 USER $MY_USER
 
@@ -86,7 +87,7 @@ RUN python3 -m pip install --upgrade pipenv && \
 # RUN <add installation commands here>
 
 # Tool1 to add
-ENV TOOL_NAME="httpx"
+##ENV TOOL_NAME="httpx"
 RUN go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 
 #Tool2 to add
@@ -94,13 +95,13 @@ RUN go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 #RUN go install -v github.com/projectdiscovery/proxify/cmd/proxify@latest
 
 # Tool3 to add
-ENV TOOL_NAME="dnsx"
-RUN go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+#ENV TOOL_NAME="dnsx"
+#RUN go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
 
 # Tool4 to add
-# ENV TOOL_NAME="naabu"
 # RUN apk add libpcap-dev  # install as root
-# RUN go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+ENV TOOL_NAME="naabu"
+RUN go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
 
 
 CMD ["/bin/bash"]
