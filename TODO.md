@@ -29,7 +29,7 @@ These tools are included in the 'api-security-toolbox' image
 - [x] [httpX](https://github.com/projectdiscovery/httpx)
 - [x] [proxify](https://github.com/projectdiscovery/proxify)
 
-These tools are only available through docker-compose in [utils](/utils) folder
+These following tools are only available through docker-compose in [utils](/utils) folder
 - [x] [hoppscotch](https://github.com/hoppscotch/hoppscotch), an Open source API development ecosystem called.  
 - [x] [CyberChef](https://github.com/gchq/CyberChef), the Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis.   
 - [x] [reconmap](https://github.com/reconmap/reconmap), a VAPT (vulnerability assessment and penetration testing) automation and reporting platform.
