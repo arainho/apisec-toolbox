@@ -4,8 +4,6 @@
 
 ### New
 - [ ] [hyperscan](https://github.com/intel/hyperscan)
-- [ ] [httpX](https://github.com/projectdiscovery/httpx)
-- [ ] [proxify](https://github.com/projectdiscovery/proxify)
 
 ### With errors
 - [ ] racepwn 
@@ -28,6 +26,8 @@ These tools are included in the 'api-security-toolbox' image
 - [x] sslscan2
   - dependencies alpine-sdk, perl, zlib-dev, linux-headers, openssl, curl, unzip, git
   - sslscan docker image [layers](https://hub.docker.com/layers/shamelesscookie/sslscan/latest/images/sha256-5f3dbd82c8d3c8da79887a9c56eb9679b7b191c3019342ac3f441944e895b270?context=explore)
+- [x] [httpX](https://github.com/projectdiscovery/httpx)
+- [x] [proxify](https://github.com/projectdiscovery/proxify)
 
 These tools are only available through docker-compose in [utils](/utils) folder
 - [x] [hoppscotch](https://github.com/hoppscotch/hoppscotch), an Open source API development ecosystem called.  
