@@ -6,8 +6,8 @@
 - [ ] [https://github.com/blst-security/firecracker](firecracker)
 
 ### With errors
-- [ ] racepwn 
-  - fix errors on 'RUN' lines for [racepwn](https://github.com/racepwn/racepwn)
+- [ ] [racepwn](https://github.com/racepwn/racepwn) 
+  - fix errors on 'RUN' lines for racepwn
 - [ ] [hyperscan](https://github.com/intel/hyperscan)
 
 ## Next steps
