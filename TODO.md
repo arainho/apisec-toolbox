@@ -3,14 +3,15 @@
 ## Tools to add
 
 ### New
-- [ ] [hyperscan](https://github.com/intel/hyperscan)
+- [ ] [https://github.com/blst-security/firecracker](firecracker)
 
 ### With errors
 - [ ] racepwn 
   - fix errors on 'RUN' lines for [racepwn](https://github.com/racepwn/racepwn)
+- [ ] [hyperscan](https://github.com/intel/hyperscan)
 
 ## Next steps
-- [ ] Create a list of tools installed in 'api-security-toolbox'  
+- [x] Create a list of tools installed in 'api-security-toolbox'  
 - [ ] evaluate the proper file for the list (CSV, JSON) ? 
 - [ ] evaluate appropriate languange for building the list (Python, Golang, Other) ?  
 - [ ] Check if tools binaries or scripts are in the path  
