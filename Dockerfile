@@ -246,10 +246,10 @@ RUN git clone --depth=1  https://github.com/TheHackerDev/race-the-web $MY_HOME/r
     git clone --depth=1 https://github.com/rbsec/sslscan $APPS_TARGET/sslscan && \
         cd $APPS_TARGET/sslscan && \
         PREFIX=$MY_HOME make static && \
-        PREFIX=$MY_HOME make install
-    go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-    go install -v github.com/projectdiscovery/proxify/cmd/proxify@latest
-    go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+        PREFIX=$MY_HOME make install && \
+    go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest  && \
+    go install -v github.com/projectdiscovery/proxify/cmd/proxify@latest && \
+    go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest && \
     go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
 
 
