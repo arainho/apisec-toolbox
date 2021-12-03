@@ -88,9 +88,10 @@ RUN python3 -m pip install --upgrade pipenv && \
 
 # Tool1 to add
 ENV TOOL_NAME="firecracker"
-RUN git clone https://github.com/blst-security/firecracker && \
-        cd firecracker && \
-        cargo build --release
+RUN git clone --depth=1 https://github.com/blst-security/firecracker ${APPS_TARGET}/firecracker && \
+        cd ${APPS_TARGET}/firecracker && \
+        cargo build --release && \
+        find . -type f -name firecracker
 
 
 CMD ["/bin/bash"]
