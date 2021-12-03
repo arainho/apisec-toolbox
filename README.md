@@ -12,10 +12,10 @@ The [api-security-toolbox](https://hub.docker.com/r/arainho/api-security-toolbox
 
 The main image is based on the `Dockerfile` and has the following features:
 - multi-stage build to save disk space
-- tools and utilities installed as normal user appuser
 - linux os utilities installed as root
+- tools and utilities installed as appuser (normal user with sudo)
 
-The [`Dockerfile.root`](drafts/Dockerfile.root) is a different version of api-security-toolbox with all tools installed as root.
+The [`drafts/Dockerfile.root`](drafts/Dockerfile.root) is a different version of api-security-toolbox with all tools installed as root.
 Please note that the docker images (Dockerfile, Dockerfile.multistage) are in alpha stage.
 
 ## 3. run the api-security-toolbox
