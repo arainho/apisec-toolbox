@@ -87,21 +87,10 @@ RUN python3 -m pip install --upgrade pipenv && \
 # RUN <add installation commands here>
 
 # Tool1 to add
-##ENV TOOL_NAME="httpx"
-RUN go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-
-#Tool2 to add
-#ENV TOOL_NAME="proxify"
-#RUN go install -v github.com/projectdiscovery/proxify/cmd/proxify@latest
-
-# Tool3 to add
-#ENV TOOL_NAME="dnsx"
-#RUN go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
-
-# Tool4 to add
-# RUN apk add libpcap-dev  # install as root
-ENV TOOL_NAME="naabu"
-RUN go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+ENV TOOL_NAME="firecracker"
+RUN git clone https://github.com/blst-security/firecracker && \
+        cd firecracker && \
+        cargo build --release
 
 
 CMD ["/bin/bash"]
