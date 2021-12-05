@@ -4,12 +4,12 @@ name: CI - Collect wordlists
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ dev ]
+    branches: [ main ]
     paths:
      - wordlists/**
      - '.github/workflows/collect_wordlists.yml'
   pull_request:
-    branches: [ dev ]
+    branches: [ main ]
     paths:
      - wordlists/**
      - '.github/workflows/collect_wordlists.yml'
