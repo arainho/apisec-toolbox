@@ -2,7 +2,7 @@
 
 **WARNING: This is a development repository, use it at your own risk !!!**
 
-This branch is dedicated to experimenting around automatic and manual flows related to security testing for APIs.
+This repository is dedicated to experimenting around automatic and manual flows related to security testing for APIs.
 
 ## 1 - workdlists bundle
 Collect several wordlists and build a bundle.
