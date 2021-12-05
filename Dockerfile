@@ -1,5 +1,7 @@
-# golang:alpine3.14
-FROM docker.io/golang@sha256:5ce2785c82a96349131913879a603fc44d9c10d438f61bba84ee6a1ef03f6c6f AS build-env
+## DIGEST f0a9bdbceb34c8a3f4bf5455998c5f562e53e6d1f764bbdd2ac519a8c3ef2559
+## docker.io/golang:alpine3.14
+
+FROM docker.io/golang@sha256:f0a9bdbceb34c8a3f4bf5455998c5f562e53e6d1f764bbdd2ac519a8c3ef2559 AS build-env
 LABEL org.opencontainers.image.authors="github.com/arainho"
 
 ENV MY_USER="appuser"
@@ -251,7 +253,6 @@ RUN git clone --depth=1  https://github.com/TheHackerDev/race-the-web $MY_HOME/r
     go install -v github.com/projectdiscovery/proxify/cmd/proxify@latest && \
     go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest && \
     go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
-
 
 # wordlists
 RUN curl -o $MY_HOME/wordlists/common-api-endpoints-mazen160.txt "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common-api-endpoints-mazen160.txt"RUN curl -o $MY_HOME/wordlists/yassineaboukir-3203-common-api-endpoints.txt "https://gist.githubusercontent.com/yassineaboukir/8e12adefbd505ef704674ad6ad48743d/raw/3ea2b7175f2fcf8e6de835c72cb2b2048f73f847/List%2520of%2520API%2520endpoints%2520&%2520objects"  && \
