@@ -2,13 +2,13 @@ name: CI - Docker testing image
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ main ]
     paths:
      - 'Dockerfile.testing'
      - '.dockerignore'
      - '.github/workflows/docker-testing-image.yml'
   pull_request:
-    branches: [ dev ]
+    branches: [ main ]
     paths:
      - 'Dockerfile.testing'
      - '.dockerignore'
