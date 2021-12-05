@@ -23,6 +23,13 @@ Please note that the docker images (Dockerfile, Dockerfile.multistage) are in al
 docker run -it --rm arainho/api-security-toolbox /bin/bash
 ```
 
+Set a password for user
+```
+passwd appuser
+```
+**warning: for simplicity, the sudo works without password for any command.** You are advised to remove the `NOPASSWD` word from the line `appuser ALL=(ALL) ALL` in `/etc/sudoers.d/appuser` file and the linux will start asking your password to run commands as sudo.
+
+
 If you need apicheck tools inside the toolbox you need docker unix socket inside the container
 ```bash
 docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock arainho/api-security-toolbox /bin/bash
