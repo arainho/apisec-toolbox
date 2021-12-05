@@ -15,11 +15,11 @@ on:
      - '.github/workflows/docker-testing-image.yml'
 
 jobs:
-
   docker:
     runs-on: ubuntu-latest
 
     steps:
+    # Checks-out our repository
     - name: Checkout
       uses: actions/checkout@v2
 
