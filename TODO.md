@@ -8,14 +8,15 @@
 ## Tools to add
 
 ### New
-- [ ] [jq]
-- [ ] [wasfsw00f]
-- [ ] [firecracker](https://github.com/blst-security/firecracker)
+- [ ] [jq](https://github.com/stedolan/jq)
+- [ ] [wasfsw00f](https://github.com/EnableSecurity/wafw00f)
 
 ### With errors
 - [ ] [racepwn](https://github.com/racepwn/racepwn) 
   - fix errors on 'RUN' lines for racepwn
 - [ ] [hyperscan](https://github.com/intel/hyperscan)
+- [ ] [firecracker](https://github.com/blst-security/firecracker)
+  - installation in Dockerfile.testing completes, but tool execution was not successful.
 
 ## Next steps
 - [x] Create a list of tools installed in 'api-security-toolbox'  
