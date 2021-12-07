@@ -56,31 +56,33 @@ On the [`labs`](./labs) folders has scripts to build and run vulnerable API's lo
 The purpose is to have local labs to exploit and learn API security.
 
 ## 5. collaboration
-For adding new tools of fix broken ones from [ToDo list](TODO.md) use the following procedure:
-0. Clone the repository
+For adding new tools or fix broken entries from [ToDo list](TODO.md) use the following procedure:
+1. Clone the repository
    ```bash
-   git clone -b dev https://github.com/arainho/awesome-api-security
+   git clone https://github.com/arainho/api-security-toolbox
    git checkout -b tool-xyz
    ```
-2. Open the `Dockerfile.testing` file with a text editor
-   - Add your command(s) in the last RUN line    
-   - uncomment the lines in RUN       
-5. Build the image
+
+2. Open the `Dockerfile.testing` with a text editor and change the following lines:
+   - `ENV TOOL_NAME="tool-name"`
+   - `RUN <add installation commands here>`
+   
+3. Build the image
    ```bash
-   docker build -t api-security-toolbox:local -f Dockerfile.testing 
+   docker build -t api-security-toolbox:local -f Dockerfile.testing
    ```
-6. If everything looks good, create a pull request
+
+4. If everything looks good, create a pull request
    ```bash
    git add Dockerfile.testing
-   git commit -m "new entry for toll-xyz"
+   git commit -m "new entry for tool-xyz"
    git push origin tool-xyz
    ```
    
    you can check more information on creating a pull request [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
    
- 7. A maintainer will review the pull request
+ 5. A maintainer will review the pull request
     - manual review
-    - manualy merge to dev
-    - add extra lines on Dockerfile and Dockerfile.multistage
+    - add extra lines on Dockerfile.multistage
     - github actions workflow will run
     - If all looks good your PR will pass 😃
