@@ -84,7 +84,11 @@ RUN python3 -m pip install --upgrade pipenv && \
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
 
-ENV TOOL_NAME="jq"
-RUN type jq
+ENV TOOL_NAME="nuclei"
+RUN go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest && \
+        git clone --depth=1 https://github.com/projectdiscovery/nuclei-templates.git $MY_HOME/templates/nuclei-templates && \
+        nuclei -ud $HOME/templates/ && \
+        nuclei -ut && \
+        nuclei --update
 
 CMD ["/bin/bash"]
