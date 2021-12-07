@@ -1,8 +1,15 @@
 # TODO's list
 
+## Features
+
+### sudo
+- Set NOPASSWD for passwd command only instead of all commands
+
 ## Tools to add
 
 ### New
+- [ ] [jq]
+- [ ] [wasfsw00f]
 - [ ] [firecracker](https://github.com/blst-security/firecracker)
 
 ### With errors
