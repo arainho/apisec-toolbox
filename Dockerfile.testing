@@ -48,7 +48,9 @@ RUN addgroup -g 9999 $MY_GROUP && \
     adduser $MY_USER wireshark
 
 USER $MY_USER
+WORKDIR $MY_HOME
 
+# create folders
 # workdir
 RUN mkdir -m 750 -p $APPS_TARGET && \
     mkdir -m 750 -p $MY_HOME/bin && \
@@ -66,9 +68,6 @@ RUN python3 -m pip install --upgrade pipenv && \
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
     export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH" && \
     echo 'if which ruby >/dev/null && which gem >/dev/null; then PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"; fi' >> ~/.bashrc && \
-    npm install yarn && \
-    export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)" && \
-    echo 'if which yarn >/dev/null; then echo export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)"; fi' >> ~/.bashrc && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
     source $MY_HOME/.cargo/env && \
     rustup component add rustfmt && \
@@ -84,11 +83,9 @@ RUN python3 -m pip install --upgrade pipenv && \
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
 
-ENV TOOL_NAME="nuclei"
-RUN go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest && \
-        git clone --depth=1 https://github.com/projectdiscovery/nuclei-templates.git $MY_HOME/templates/nuclei-templates && \
-        nuclei -ud $HOME/templates/ && \
-        nuclei -ut && \
-        nuclei --update
+ENV TOOL_NAME="yarn"
+RUN npm install yarn && \
+    export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)" && \
+    echo 'if which yarn >/dev/null; then echo export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)"; fi' >> ~/.bashrc && \
 
 CMD ["/bin/bash"]
