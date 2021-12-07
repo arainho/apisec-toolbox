@@ -86,6 +86,6 @@ RUN python3 -m pip install --upgrade pipenv && \
 ENV TOOL_NAME="yarn"
 RUN npm install yarn && \
     export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)" && \
-    echo 'if which yarn >/dev/null; then echo export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)"; fi' >> ~/.bashrc && \
+    echo 'if which yarn >/dev/null; then echo export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)"; fi' >> ~/.bashrc
 
 CMD ["/bin/bash"]
