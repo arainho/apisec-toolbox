@@ -256,7 +256,8 @@ RUN git clone --depth=1  https://github.com/TheHackerDev/race-the-web $MY_HOME/r
     go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
 
 # wordlists
-RUN curl -o $MY_HOME/wordlists/common-api-endpoints-mazen160.txt "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common-api-endpoints-mazen160.txt"RUN curl -o $MY_HOME/wordlists/yassineaboukir-3203-common-api-endpoints.txt "https://gist.githubusercontent.com/yassineaboukir/8e12adefbd505ef704674ad6ad48743d/raw/3ea2b7175f2fcf8e6de835c72cb2b2048f73f847/List%2520of%2520API%2520endpoints%2520&%2520objects"  && \
+RUN curl -o $MY_HOME/wordlists/common-api-endpoints-mazen160.txt "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common-api-endpoints-mazen160.txt"
+    curl -o $MY_HOME/wordlists/yassineaboukir-3203-common-api-endpoints.txt "https://gist.githubusercontent.com/yassineaboukir/8e12adefbd505ef704674ad6ad48743d/raw/3ea2b7175f2fcf8e6de835c72cb2b2048f73f847/List%2520of%2520API%2520endpoints%2520&%2520objects"  && \
     curl -o $MY_HOME/wordlists/danielmiessler-SecLists-swagger.txt "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/swagger.txt" && \
     curl -o $MY_HOME/wordlists/danielmiessler-SecLists-api-endpoints.txt "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/api/api-endpoints.txt" && \
     curl -o $MY_HOME/wordlists/danielmiessler-SecLists-graphql.txt "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/graphql.txt" && \
@@ -264,6 +265,7 @@ RUN curl -o $MY_HOME/wordlists/common-api-endpoints-mazen160.txt "https://raw.gi
     curl -o $MY_HOME/wordlists/httparchive_apiroutes_2021_08_28.txt "https://wordlists-cdn.assetnote.io/./data/automated/httparchive_apiroutes_2021_08_28.txt" && \
     curl -o $MY_HOME/wordlists/fuzzdb-project-common-methods.txt "https://github.com/fuzzdb-project/fuzzdb/tree/master/discovery/common-methods" && \
     curl -o $MY_HOME/wordlists/routes-large.kite.tar.gz "https://wordlists-cdn.assetnote.io/data/kiterunner/routes-large.kite.tar.gz" && \
+    git clone --depth=1 https://github.com/chrislockard/api_wordlist.git $MY_HOME/wordlists/chrislockard && \
         cd $MY_HOME/wordlists && \ 
         tar xvzf routes-large.kite.tar.gz
 
