@@ -1,0 +1,37 @@
+name: CI - Verify tools inside image
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+     - 'Dockerfile'
+     - '.github/workflows/verify-tools.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+     - 'Dockerfile'
+     - '.github/workflows/verify-tools.yml'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out our repository
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Pull the Docker Hub image
+    - name: Pull
+      run: |-
+        docker pull docker.io/arainho/api-security-toolbox:latest
+
+    # Run additional tests
+    - name: Tests
+      run: |-
+        for tool in $(egrep -v "(^$|#)" drafts/tools-list.txt)
+        do
+          docker run --rm \
+            docker.io/arainho/api-security-toolbox:latest \
+            which "$tool" || type "$tool" || find . -type f -name "$tool"
+        done
