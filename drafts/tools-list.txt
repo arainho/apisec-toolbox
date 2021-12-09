@@ -1,5 +1,33 @@
 # tools list
 
+# utilities
+git
+jq
+yq
+
+# network
+curl
+wget
+httpie
+nmap
+
+# pkg mgmt
+apk
+yarn
+npm
+gem
+pip
+
+# virtual env
+pipenv
+rbenv
+
+# languages
+python
+ruby
+go
+rust
+
 # secrets
 shhgit
 truffleHog
@@ -78,4 +106,8 @@ fuzz-lightyear
 newman
 ciphey
 sslscan
+httpx
+proxify
+dnsx
+naabu
 
