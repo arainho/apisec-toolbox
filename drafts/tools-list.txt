@@ -30,7 +30,7 @@ rust
 
 # secrets
 shhgit
-truffleHog
+trufflehog
 gitleaks
 detect-secrets
 git-secrets
@@ -41,7 +41,7 @@ gobuster
 dirsearch
 wadl-dumper
 ffuf
-Amass
+amass
 nuclei
 jaeles
 gospider
@@ -49,7 +49,7 @@ arjun
 ParamSpider
 PyJFuzz
 TnT-Fuzzer
-kiterunner
+kr            # kiterunner
 
 
 # extentions
