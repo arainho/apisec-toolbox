@@ -364,7 +364,7 @@ COPY --chown=$MY_USER:$MY_GROUP --from=build-env $MY_HOME/wordlists $MY_HOME/wor
 COPY --chown=$MY_USER:$MY_GROUP --from=build-env $MY_HOME/extensions $MY_HOME/extensions
 COPY --chown=$MY_USER:$MY_GROUP --from=build-env $MY_HOME/templates $MY_HOME/templates
 COPY --chown=$MY_USER:$MY_GROUP --from=build-env $MY_HOME/signatures $MY_HOME/signatures
-COPY --chown=$MY_USER:$MY_GROUP --from=build-env $HOME/node_modules $HOME/node_modules
+COPY --chown=$MY_USER:$MY_GROUP --from=build-env $MY_HOME/node_modules $MY_HOME/node_modules
 COPY --chown=$MY_USER:$MY_GROUP --from=build-env $APPS_TARGET $APPS_TARGET
 
 COPY --from=build-env /usr/local /usr/local
