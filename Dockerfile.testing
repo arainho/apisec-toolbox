@@ -1,5 +1,7 @@
-# golang:alpine3.14
-FROM docker.io/golang@sha256:5ce2785c82a96349131913879a603fc44d9c10d438f61bba84ee6a1ef03f6c6f AS build-env
+## DIGEST f0a9bdbceb34c8a3f4bf5455998c5f562e53e6d1f764bbdd2ac519a8c3ef2559
+## docker.io/golang:alpine3.14
+
+FROM docker.io/golang@sha256:f0a9bdbceb34c8a3f4bf5455998c5f562e53e6d1f764bbdd2ac519a8c3ef2559 AS build-env
 LABEL org.opencontainers.image.authors="github.com/arainho"
 
 ENV MY_USER="appuser"
@@ -46,12 +48,12 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache ragel boost-dev pkgconfig libpcap-dev && \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
     adduser $MY_USER wireshark
+    
 
 USER $MY_USER
 WORKDIR $MY_HOME
 
 # create folders
-# workdir
 RUN mkdir -m 750 -p $APPS_TARGET && \
     mkdir -m 750 -p $MY_HOME/bin && \
     mkdir -m 750 -p $MY_HOME/plugins && \
@@ -68,6 +70,9 @@ RUN python3 -m pip install --upgrade pipenv && \
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
     export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH" && \
     echo 'if which ruby >/dev/null && which gem >/dev/null; then PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"; fi' >> ~/.bashrc && \
+    npm install yarn && \
+    export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)" && \
+    echo 'if which yarn >/dev/null; then echo export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)"; fi' >> ~/.bashrc && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
     source $MY_HOME/.cargo/env && \
     rustup component add rustfmt && \
@@ -84,8 +89,6 @@ RUN python3 -m pip install --upgrade pipenv && \
 # RUN <add installation commands here>
 
 ENV TOOL_NAME="yarn"
-RUN npm install yarn && \
-    export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)" && \
-    echo 'if which yarn >/dev/null; then echo export PATH="$PATH:$($HOME/node_modules/.bin/yarn global bin)"; fi' >> ~/.bashrc
+RUN ls -la $HOME/node_modules/
 
 CMD ["/bin/bash"]
