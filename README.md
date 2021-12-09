@@ -2,6 +2,7 @@
 
 **WARNING: This is a development repository, use it at your own risk !!!**
 
+API Security Toolbox is a Swiss knife for API security testing including a docker image, some labs and resources. 
 This repository is dedicated to experimenting around automatic and manual flows related to security testing for APIs.
 
 ## 1 - workdlists bundle
