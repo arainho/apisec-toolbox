@@ -23,7 +23,7 @@ RUN addgroup -g 9999 $MY_GROUP && \
     chmod 0440 /etc/sudoers.d/$MY_USER && \
     apk add --no-cache bash zsh fish \
                        bind-tools openssh git \
-                       mandoc man-pages less less-doc jq \
+                       mandoc man-pages less less-doc jq yq \
                        netcat-openbsd curl wget httpie nmap \
                        ca-certificates coreutils libzip-dev zip unzip && \
     apk add --no-cache --update python2 python3 py3-pip && \
