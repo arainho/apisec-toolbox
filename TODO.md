@@ -12,6 +12,7 @@
 - [ ] [gotestwaf](https://github.com/wallarm/gotestwaf)
 - [x] [yq](https://github.com/mikefarah/yq)
 - [ ]  strace and gdb
+- [ ]  etckeeper
 
 ### With errors
 - [ ] [racepwn](https://github.com/racepwn/racepwn) 
