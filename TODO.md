@@ -10,6 +10,8 @@
 ### New
 - [ ] [wasfsw00f](https://github.com/EnableSecurity/wafw00f)
 - [ ] [gotestwaf](https://github.com/wallarm/gotestwaf)
+- [x] [yq](https://github.com/mikefarah/yq)
+- [ ]  strace and gdb
 
 ### With errors
 - [ ] [racepwn](https://github.com/racepwn/racepwn) 
@@ -41,7 +43,6 @@ These tools are included in the 'api-security-toolbox' image
 - [x] [httpX](https://github.com/projectdiscovery/httpx)
 - [x] [proxify](https://github.com/projectdiscovery/proxify)
 - [x] [jq](https://github.com/stedolan/jq)
-- [x] [yq](https://github.com/mikefarah/yq)
 
 These following tools are only available through docker-compose in [utils](/utils) folder
 - [x] [hoppscotch](https://github.com/hoppscotch/hoppscotch), an Open source API development ecosystem called.  
