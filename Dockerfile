@@ -329,8 +329,9 @@ RUN addgroup -g 9999 $MY_GROUP && \
     adduser $MY_USER wireshark
 
 USER $MY_USER
+WORKDIR $MY_HOME
 
-# workdir
+# create folders
 RUN mkdir -m 750 -p $APPS_TARGET && \
     mkdir -m 750 -p $MY_HOME/bin && \
     mkdir -m 750 -p $MY_HOME/plugins && \
@@ -370,5 +371,6 @@ COPY --chown=$MY_USER:$MY_GROUP --from=build-env $APPS_TARGET $APPS_TARGET
 COPY --from=build-env /usr/local /usr/local
 COPY --from=build-env /usr/local/bin /usr/local/bin
 COPY --from=build-env /usr/share/man /usr/share/man
+COPY --from=build-env /etc/sudoers.d /etc/sudoers.d
 
 CMD ["/bin/bash"]
