@@ -8,7 +8,7 @@ yq
 # network
 curl
 wget
-httpie
+http  # httpie
 nmap
 
 # pkg mgmt
@@ -49,7 +49,7 @@ arjun
 ParamSpider
 PyJFuzz
 TnT-Fuzzer
-kr            # kiterunner
+kr  # kiterunner
 
 
 # extentions
