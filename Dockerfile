@@ -22,8 +22,8 @@ RUN addgroup -g 9999 $MY_GROUP && \
     echo "$MY_USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$MY_USER && \
     chmod 0440 /etc/sudoers.d/$MY_USER && \
     apk add --no-cache bash zsh fish \
-                       bind-tools openssh git \
-                       mandoc man-pages less less-doc jq yq \
+                       bind-tools openssh git strace gdb \
+                       mandoc man-pages less less-doc jq \
                        netcat-openbsd curl wget httpie nmap \
                        ca-certificates coreutils libzip-dev zip unzip && \
     apk add --no-cache --update python2 python3 py3-pip && \
@@ -48,7 +48,6 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache ragel boost-dev pkgconfig libpcap-dev && \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
     adduser $MY_USER wireshark
-    
 
 USER $MY_USER
 WORKDIR $MY_HOME
