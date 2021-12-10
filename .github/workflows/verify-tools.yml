@@ -35,6 +35,5 @@ jobs:
         do
           docker run --rm \
             docker.io/arainho/api-security-toolbox:latest \
-            find . -type f -name "$tool"
             which "$tool"
         done
