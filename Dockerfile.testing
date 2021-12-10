@@ -98,7 +98,4 @@ RUN clone --depth=1 https://github.com/auth0/repo-supervisor.git $APPS_TARGET/re
         echo "JSON_OUTPUT=1 node $APPS_TARGET/repo-supervisor/dist/cli.js $1" >> $MY_HOME/bin/repo-supervisor && \
         chmod u+x $MY_HOME/bin/repo-supervisor
 
-RUN cat $MY_HOME/bin/repo-supervisor
-RUN ls -la $MY_HOME/bin/repo-supervisor
-
 CMD ["/bin/bash"]
