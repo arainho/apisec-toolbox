@@ -8,8 +8,8 @@
 ## Tools to add
 
 ### New
-- [ ] [jq](https://github.com/stedolan/jq)
 - [ ] [wasfsw00f](https://github.com/EnableSecurity/wafw00f)
+- [ ] [gotestwaf](https://github.com/wallarm/gotestwaf)
 
 ### With errors
 - [ ] [racepwn](https://github.com/racepwn/racepwn) 
@@ -18,12 +18,15 @@
 - [ ] [firecracker](https://github.com/blst-security/firecracker)
   - installation in Dockerfile.testing completes, but tool execution was not successful.
 
+## In progress
+- [x] verify if tools binaries or scripts are in the image path
+- [x] create a github workflow for checking if tools inside container image
+
 ## Next steps
-- [x] Create a list of tools installed in 'api-security-toolbox'  
+- [x] Create a list of tools installed in 'api-security-toolbox'
 - [ ] evaluate the proper file for the list (CSV, JSON) ? 
 - [ ] evaluate appropriate languange for building the list (Python, Golang, Other) ?  
-- [ ] Check if tools binaries or scripts are in the path  
-- [ ] Add name, path and sha256sum os each tool in the list   
+- [ ] Add name, path and sha256sum os each tool in the list 
 
 ## Done  
 These tools are included in the 'api-security-toolbox' image
@@ -37,6 +40,8 @@ These tools are included in the 'api-security-toolbox' image
   - sslscan docker image [layers](https://hub.docker.com/layers/shamelesscookie/sslscan/latest/images/sha256-5f3dbd82c8d3c8da79887a9c56eb9679b7b191c3019342ac3f441944e895b270?context=explore)
 - [x] [httpX](https://github.com/projectdiscovery/httpx)
 - [x] [proxify](https://github.com/projectdiscovery/proxify)
+- [x] [jq](https://github.com/stedolan/jq)
+- [x] [yq](https://github.com/mikefarah/yq)
 
 These following tools are only available through docker-compose in [utils](/utils) folder
 - [x] [hoppscotch](https://github.com/hoppscotch/hoppscotch), an Open source API development ecosystem called.  
