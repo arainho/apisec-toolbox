@@ -4,14 +4,14 @@ on:
   push:
     branches: [ main ]
     paths:
-     - 'drafts/tools-list.txt'
      - 'Dockerfile'
+     - 'drafts/tools-list.txt'
      - '.github/workflows/verify-tools.yml'
   pull_request:
     branches: [ main ]
     paths:
-     - 'drafts/tools-list.txt'
      - 'Dockerfile'
+     - 'drafts/tools-list.txt'
      - '.github/workflows/verify-tools.yml'
 
 jobs:
