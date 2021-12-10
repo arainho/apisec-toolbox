@@ -89,7 +89,7 @@ RUN python3 -m pip install --upgrade pipenv && \
 # RUN <add installation commands here>
 
 ENV TOOL_NAME="repo-supervisor"
-RUN clone --depth=1 https://github.com/auth0/repo-supervisor.git $APPS_TARGET/repo-supervisor && \
+RUN git clone --depth=1 https://github.com/auth0/repo-supervisor.git $APPS_TARGET/repo-supervisor && \
         cd $APPS_TARGET/repo-supervisor && \
         npm ci && \
         npm run build && \
