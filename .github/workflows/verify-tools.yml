@@ -31,9 +31,9 @@ jobs:
     # Run additional tests
     - name: Tests
       run: |-
-        for tool in $(egrep -v "(^$|#)" drafts/tools-list.txt)
+        for tool in $(egrep -v "(^$|^#)" drafts/tools-list.txt)
         do
           docker run --rm \
-            docker.io/arainho/api-security-toolbox:latest \
-            which "$tool"
+                 docker.io/arainho/api-security-toolbox:latest \
+                 which "$tool"
         done
