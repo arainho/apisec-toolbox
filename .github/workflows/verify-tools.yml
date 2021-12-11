@@ -32,6 +32,6 @@ jobs:
     - name: Tests
       run: |-
         docker run --rm \
-               -v "$PWD/drafts/verify-tools.py:/opt/verify-tools.py" \
+               -v "$PWD/drafts:/opt" \
                docker.io/arainho/api-security-toolbox:latest \
                python3 /opt/verify-tools.py
