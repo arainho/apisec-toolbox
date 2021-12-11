@@ -6,12 +6,14 @@ on:
     paths:
      - 'Dockerfile'
      - 'drafts/tools-list.txt'
+     - 'drafts/verify-tools.py'
      - '.github/workflows/verify-tools.yml'
   pull_request:
     branches: [ main ]
     paths:
      - 'Dockerfile'
      - 'drafts/tools-list.txt'
+     - 'drafts/verify-tools.py'
      - '.github/workflows/verify-tools.yml'
 
 jobs:
