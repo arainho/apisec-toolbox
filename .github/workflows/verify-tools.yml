@@ -32,9 +32,6 @@ jobs:
     - name: Tests
       run: |-
         docker run --rm \
-               -v "$PWD/drafts:/opt" \
+               -v "$PWD/drafts/verify-tools.py:/opt/verify-tools.py" \
                docker.io/arainho/api-security-toolbox:latest \
-                  egrep -v "(^$|^#)" < /opt/tools-list.txt | while IFS= read -r line; \
-                  do \
-                    which "$tool"; \
-                  done
+               python3 /opt/verify-tools.py
