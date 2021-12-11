@@ -8,11 +8,9 @@ tools_list = "tools-list.txt"
 all_tools = {}
 
 def find_file(the_tool):
-    #print(the_tool, end='')
     return shutil.which(the_tool)
 
 with open(tools_list, 'r', encoding='utf-8') as reader:
-    # Read and print the entire file line by line
     line = reader.readline()
     while line != '': 
         if not line.startswith('#') and not line.startswith('\n'):
