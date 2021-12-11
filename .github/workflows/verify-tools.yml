@@ -38,3 +38,7 @@ jobs:
                docker.io/arainho/api-security-toolbox:latest \
                sh -c "cd /opt; python verify-tools.py"
 
+    # Commit possible changed files back to the repository.
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Apply 'collect wordlists' auto-commit changes
