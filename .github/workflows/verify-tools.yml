@@ -34,6 +34,7 @@ jobs:
         docker run --rm \
                -v "$PWD/drafts:/opt" \
                docker.io/arainho/api-security-toolbox:latest \
-               for tool in $(egrep -v "(^$|^#)" /opt/tools-list.txt); do \
-                  which "$tool"; \
-               done
+                  egrep -v "(^$|^#)" < /opt/tools-list.txt | while IFS= read -r line; \
+                  do \
+                    which "$tool"; \
+                  done
