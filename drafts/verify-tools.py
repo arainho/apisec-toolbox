@@ -4,8 +4,7 @@ import json
 import shutil
 import hashlib
 
-my_path = "./"
-tools_list = "drafts/tools-list.txt"
+tools_list = "tools-list.txt"
 all_tools = {}
 
 def find_file(the_tool):
