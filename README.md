@@ -16,9 +16,6 @@ The main image is based on the `Dockerfile` and has the following features:
 - linux os utilities installed as root
 - tools and utilities installed as appuser (normal user with sudo)
 
-The [`drafts/Dockerfile.root`](drafts/Dockerfile.root) is a different version of api-security-toolbox with all tools installed as root.
-Please note that the docker images (Dockerfile, Dockerfile.multistage) are in alpha stage.
-
 ## 3. run the api-security-toolbox
 ```bash
 docker run -it --rm arainho/api-security-toolbox /bin/bash
