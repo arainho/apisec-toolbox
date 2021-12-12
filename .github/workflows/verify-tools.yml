@@ -33,6 +33,8 @@ jobs:
     # Run additional tests
     - name: Tests
       run: |-
+        id
+        chmod -Rv +w $PWD/drafts/
         docker run --rm \
                -v "$PWD/drafts:/tmp" \
                docker.io/arainho/api-security-toolbox:latest \
