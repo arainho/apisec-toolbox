@@ -1,9 +1,11 @@
-# API Security Toolbox
+# APISec Toolbox
 
-**WARNING: This is a development repository, use it at your own risk !!!**
+The `apisec-toolbox` is a Swiss knife for _API Security testing_. 
 
-API Security Toolbox (aka apisec-toolbox) is a Swiss knife for API security testing including a docker image, some labs and resources.    
-This repository is dedicated to experimenting around automatic and manual flows related to security testing for APIs.
+This repository includes an workdlists bundle, dedicated docker image, labs and resources.    
+It's dedicated to experimenting around automatic and manual flows related to security testing for APIs.
+
+**WARNING:** This is a development repository, use it at your own risk !!!
 
 ## 1 - workdlists bundle
 Collect several wordlists and build a bundle.
