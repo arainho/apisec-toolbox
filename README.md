@@ -2,14 +2,14 @@
 
 **WARNING: This is a development repository, use it at your own risk !!!**
 
-API Security Toolbox is a Swiss knife for API security testing including a docker image, some labs and resources. 
+API Security Toolbox (aka apisec-toolbox) is a Swiss knife for API security testing including a docker image, some labs and resources. 
 This repository is dedicated to experimenting around automatic and manual flows related to security testing for APIs.
 
 ## 1 - workdlists bundle
 Collect several wordlists and build a bundle.
 
 ## 2 - build docker image for apisec-toolbox
-The [apisec-toolbox](https://hub.docker.com/r/arainho/api-security-toolbox) is a swiss knife for API security testing. 
+The [apisec-toolbox](https://hub.docker.com/r/arainho/apisec-toolbox) is a swiss knife for API security testing. 
 
 The main image is based on the `Dockerfile` and has the following features:
 - multi-stage build to save disk space
@@ -18,7 +18,7 @@ The main image is based on the `Dockerfile` and has the following features:
 
 ## 3. run the apisec-toolbox
 ```bash
-docker run -it --rm arainho/api-security-toolbox /bin/bash
+docker run -it --rm arainho/apisec-toolbox /bin/bash
 ```
 
 Set a password for user
@@ -30,7 +30,7 @@ passwd appuser
 
 If you need apicheck tools inside the toolbox you need docker unix socket inside the container
 ```bash
-docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock arainho/api-security-toolbox /bin/bash
+docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock arainho/apisec-toolbox /bin/bash
 ```
 
 Then you can install [apicheck](https://bbva.github.io/apicheck/docs) tools
@@ -57,7 +57,7 @@ The purpose is to have local labs to exploit and learn API security.
 For adding new tools or fix broken entries from [ToDo list](TODO.md) use the following procedure:
 1. Clone the repository
    ```bash
-   git clone https://github.com/arainho/api-security-toolbox
+   git clone https://github.com/arainho/apisec-toolbox
    git checkout -b tool-xyz
    ```
 
@@ -67,7 +67,7 @@ For adding new tools or fix broken entries from [ToDo list](TODO.md) use the fol
    
 3. Build the image
    ```bash
-   docker build -t api-security-toolbox:local -f Dockerfile.testing
+   docker build -t apisec-toolbox:local -f Dockerfile.testing
    ```
 
 4. If everything looks good, create a pull request
