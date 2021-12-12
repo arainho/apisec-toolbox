@@ -9,10 +9,10 @@ services:
     image: bbvalabs/apicheck-proxy
     environment:
       - APICHECK_PROXY_LISTEN_ADDR=0.0.0.0
-      - APICHECK_PROXY_LISTEN_PORT=8080
+      - APICHECK_PROXY_LISTEN_PORT=9001
       - APICHECK_PROXY_ALLOWED_HOST=mysite.com
     ports:
-      - "8080:8080"
+      - "9001:9001"
   replay:
     image: bbvalabs/replay
     entrypoint: exec tail -f /dev/null 
@@ -21,7 +21,9 @@ services:
     entrypoint: exec tail -f /dev/null 
   sensitive-data:
     image: bbvalabs/sensitive-data
-    entrypoint: exec tail -f /dev/null 
+    ports:
+      - "9000:9000"
+    entrypoint: sensitive-data --server 0.0.0.0:9000
   oas-checker:
     image: bbvalabs/oas-check
     entrypoint: exec tail -f /dev/null 
