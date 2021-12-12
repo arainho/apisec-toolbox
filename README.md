@@ -8,15 +8,15 @@ This repository is dedicated to experimenting around automatic and manual flows 
 ## 1 - workdlists bundle
 Collect several wordlists and build a bundle.
 
-## 2 - build docker image for api-security-toolbox
-The [api-security-toolbox](https://hub.docker.com/r/arainho/api-security-toolbox) is a swiss knife for API security testing. 
+## 2 - build docker image for apisec-toolbox
+The [apisec-toolbox](https://hub.docker.com/r/arainho/api-security-toolbox) is a swiss knife for API security testing. 
 
 The main image is based on the `Dockerfile` and has the following features:
 - multi-stage build to save disk space
 - linux os utilities installed as root
 - tools and utilities installed as appuser (normal user with sudo)
 
-## 3. run the api-security-toolbox
+## 3. run the apisec-toolbox
 ```bash
 docker run -it --rm arainho/api-security-toolbox /bin/bash
 ```
