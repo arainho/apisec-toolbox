@@ -10,6 +10,10 @@ all_tools = {}
 def find_file(the_tool):
     return shutil.which(the_tool)
 
+def write_json(my_data):
+    with open("all_tools.json", "w") as write_file:
+        json.dump(my_data, write_file)
+
 with open(tools_list, 'r', encoding='utf-8') as reader:
     line = reader.readline()
     while line != '': 
@@ -22,4 +26,6 @@ with open(tools_list, 'r', encoding='utf-8') as reader:
             }
         line = reader.readline()
 
+write_json(all_tools)
 print(json.dumps(all_tools, indent=4, sort_keys=True))
+
