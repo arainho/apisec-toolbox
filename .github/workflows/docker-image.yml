@@ -37,5 +37,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: arainho/api-security-toolbox:latest
+          tags: arainho/apisec-toolbox:latest
           file: Dockerfile
