@@ -18,6 +18,8 @@ The main image is based on the `Dockerfile` and has the following features:
 - linux os utilities installed as root
 - tools and utilities installed as appuser (normal user with sudo)
 
+Note: there is an old image called [api-security-toolbox](https://hub.docker.com/r/arainho/api-security-toolbox) that will be removed in the future.
+
 ## 3. run the apisec-toolbox
 ```bash
 docker run -it --rm arainho/apisec-toolbox /bin/bash
