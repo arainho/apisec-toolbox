@@ -13,6 +13,8 @@
 - [x] [yq](https://github.com/mikefarah/yq)
 - [ ]  strace and gdb
 - [ ]  etckeeper
+- [ ]  vim, nano
+- [ ]  [clairvoyance](https://github.com/nikitastupin/clairvoyance)
 
 ### With errors
 - [ ] [racepwn](https://github.com/racepwn/racepwn) 
