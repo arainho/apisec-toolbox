@@ -1,6 +1,6 @@
 # TODO's list
 
-## Features
+## Features to add
 
 ### sudo
 - Set NOPASSWD for passwd command only instead of all commands
@@ -23,16 +23,6 @@
 - [ ] [firecracker](https://github.com/blst-security/firecracker)
   - installation in Dockerfile.testing completes, but tool execution was not successful.
 
-## In progress
-- [x] verify if tools binaries or scripts are in the image path
-- [x] create a github workflow for checking if tools inside container image
-
-## Next steps
-- [x] Create a list of tools installed in 'api-security-toolbox'
-- [ ] evaluate the proper file for the list (CSV, JSON) ? 
-- [ ] evaluate appropriate languange for building the list (Python, Golang, Other) ?  
-- [ ] Add name, path and sha256sum os each tool in the list 
-
 ## Done  
 These tools are included in the 'api-security-toolbox' image
 - [x] [Ciphey](https://github.com/Ciphey/Ciphey), that automatically decrypt's encryptions without knowing the key or cipher, decode encodings, and crack hashes. 
@@ -53,4 +43,11 @@ These following tools are only available through docker-compose in [utils](/util
 - [x] [reconmap](https://github.com/reconmap/reconmap), a VAPT (vulnerability assessment and penetration testing) automation and reporting platform.
 - [x] [zaproxy](https://github.com/zaproxy/zaproxy), the OWASP Zed Attack Proxy (ZAP) can help you automatically find security vulnerabilities in your web applications while you are developing and testing your applications.
 
+Task related with image tools report
+- [x] Enumerate the tools installed in 'apisec-toolbox' in a file ? - txt
+- [x] evaluate the proper output for tools report (CSV, JSON) ? - JSON
+- [x] evaluate appropriate languange for building the report (Python, Golang, Other) ? - Python
+- [x] Add name, path and sha256sum os each tool to a report file
+- [x] verify if tools binaries or scripts are in the image path
+- [x] create a github workflow for checking if tools inside container image
  
