@@ -1,11 +1,11 @@
 # TODO's list
 
-## Features to add
+## 1. Features to add
 
 ### sudo
 - Set NOPASSWD for passwd command only instead of all commands
 
-## Tools to add
+## 2. Tools to add
 
 ### New
 - [ ] [wasfsw00f](https://github.com/EnableSecurity/wafw00f)
@@ -23,7 +23,11 @@
 - [ ] [firecracker](https://github.com/blst-security/firecracker)
   - installation in Dockerfile.testing completes, but tool execution was not successful.
 
-## Done  
+## 3. Next steps
+- [ ] List all tools not found in path
+- [ ] Fix tools with `"path": null`
+
+## 4. Done  
 These tools are included in the 'api-security-toolbox' image
 - [x] [Ciphey](https://github.com/Ciphey/Ciphey), that automatically decrypt's encryptions without knowing the key or cipher, decode encodings, and crack hashes. 
 - [x] openapi_security_scanner
