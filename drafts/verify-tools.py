@@ -6,6 +6,7 @@ import hashlib
 
 tools_list = "tools-list.txt"
 all_tools = {}
+not_found = []
 
 def find_file(the_tool):
     return shutil.which(the_tool)
@@ -19,13 +20,18 @@ with open(tools_list, 'r', encoding='utf-8') as reader:
     while line != '': 
         if not line.startswith('#') and not line.startswith('\n'):
             tool = line.strip()
-            h = hashlib.sha512(tool.encode('utf-8'))
+            hash = hashlib.sha512(tool.encode('utf-8'))
+            path = find_file(tool)
+            if path == null:
+                not_found.append(tool)
             all_tools[tool] = {
-                    "path": find_file(tool),
-                    "sha256": h.hexdigest()
+                    "path": path,
+                    "sha256": hash.hexdigest()
             }
         line = reader.readline()
 
 write_json(all_tools)
 print(json.dumps(all_tools, indent=4, sort_keys=True))
 
+print('tools not found in path:')
+print(not_found)
