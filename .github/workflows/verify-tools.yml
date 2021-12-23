@@ -36,7 +36,7 @@ jobs:
         chmod -Rv 777 $PWD/drafts/
         docker run --rm \
                -v "$PWD/drafts:/tmp" \
-               docker.io/arainho/api-security-toolbox:latest \
+               docker.io/arainho/apisec-toolbox:latest \
                sh -c "cd /tmp; python verify-tools.py"
 
     # Commit possible changed files back to the repository.
