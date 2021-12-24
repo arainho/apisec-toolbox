@@ -22,7 +22,7 @@ with open(tools_list, 'r', encoding='utf-8') as reader:
             tool = line.strip()
             hash = hashlib.sha512(tool.encode('utf-8'))
             path = find_file(tool)
-            if path == null:
+            if path == "null":
                 not_found.append(tool)
             all_tools[tool] = {
                     "path": path,
