@@ -19,14 +19,15 @@ with open(tools_list, 'r', encoding='utf-8') as reader:
     line = reader.readline()
     while line != '': 
         if not line.startswith('#') and not line.startswith('\n'):
-            tool = line.strip()
-            hash = hashlib.sha512(tool.encode('utf-8'))
-            path = find_file(tool)
-            if path == "null":
-                not_found.append(tool)
-            all_tools[tool] = {
-                    "path": path,
-                    "sha256": hash.hexdigest()
+            the_tool = line.strip()
+            the_hash = hashlib.sha512(tool.encode('utf-8'))
+            the_path = find_file(the_tool)
+            print(type(the_path))
+            if the_path == "null":
+                not_found.append(the_tool)
+            all_tools[the_tool] = {
+                    "path": the_path,
+                    "sha256": the_hash.hexdigest()
             }
         line = reader.readline()
 
