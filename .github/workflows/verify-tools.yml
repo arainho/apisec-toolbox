@@ -28,7 +28,7 @@ jobs:
     # Pull the Docker Hub image
     - name: Pull
       run: |-
-        docker pull docker.io/arainho/api-security-toolbox:latest
+        docker pull docker.io/arainho/apisec-toolbox:latest
 
     # Run additional tests
     - name: Tests
