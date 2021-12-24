@@ -20,7 +20,7 @@ with open(tools_list, 'r', encoding='utf-8') as reader:
     while line != '': 
         if not line.startswith('#') and not line.startswith('\n'):
             the_tool = line.strip()
-            the_hash = hashlib.sha512(tool.encode('utf-8'))
+            the_hash = hashlib.sha512(the_tool.encode('utf-8'))
             the_path = find_file(the_tool)
             print(type(the_path))
             if the_path == "null":
