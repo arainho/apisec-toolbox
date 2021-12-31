@@ -31,7 +31,11 @@ with open(tools_list, 'r', encoding='utf-8') as reader:
         line = reader.readline()
 
 write_json(all_tools)
+
+print('Tools not found in path:')
+print(not_found)
+
+print('More details:')
 print(json.dumps(all_tools, indent=4, sort_keys=True))
 
-print('tools not found in path:')
-print(not_found)
+
