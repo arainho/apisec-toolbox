@@ -55,7 +55,7 @@ acp install oas-checker
 
 
 ## 4 - run vulnerable API's locally
-On the [`labs`](./labs) folders has scripts to build and run vulnerable API's locally.  
+The [`labs`](./labs) folders has scripts to build and run vulnerable APIs locally.  
 The purpose is to have local labs to exploit and learn API security.
 
 ## 5. collaboration
