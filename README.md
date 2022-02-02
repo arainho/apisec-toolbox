@@ -32,10 +32,11 @@ passwd appuser
 **warning: for simplicity, the sudo works without password for any command.** You are advised to remove the `NOPASSWD` word from the line `appuser ALL=(ALL) ALL` in `/etc/sudoers.d/appuser` file and the linux will start asking your password to run commands as sudo.
 
 
-If you need apicheck tools inside the toolbox you need docker unix socket inside the container
+If you need apicheck tools inside the apisec-toolbox you need to share 'docker unix socket' from the host
 ```bash
 docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock arainho/apisec-toolbox /bin/bash
 ```
+**warning: Using docker.sock could expose your host within the apisec-toolbox container** as stated in this [article](https://www.ctl.io/developers/blog/post/tutorial-understanding-the-security-risks-of-running-docker-containers).
 
 Then you can install [apicheck](https://bbva.github.io/apicheck/docs) tools
 ```bash
@@ -51,7 +52,7 @@ acp install openapiv2-lint
 acp install oas-checker
 ```
 
-**warning: Using docker.sock could expose your host within the toolbox container** as stated in this [article](https://www.ctl.io/developers/blog/post/tutorial-understanding-the-security-risks-of-running-docker-containers).
+
 
 ## 4 - run vulnerable API's locally
 On the [`labs`](./labs) folders has scripts to build and run vulnerable API's locally.  
