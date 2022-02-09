@@ -29,7 +29,9 @@ Set a password for user
 ```
 passwd appuser
 ```
-**warning: for simplicity, the sudo works without password for any command.** You are advised to remove the `NOPASSWD` word from the line `appuser ALL=(ALL) ALL` in `/etc/sudoers.d/appuser` file and the linux will start asking your password to run commands as sudo.
+
+**warning: for simplicity, the sudo works without password for any command.**    
+You are advised to remove the `NOPASSWD` word from the line `appuser ALL=(ALL) ALL` in `/etc/sudoers.d/appuser` file and the linux will start asking your password to run commands as sudo.
 
 
 If you need apicheck tools inside the apisec-toolbox you need to share 'docker unix socket' from the host
