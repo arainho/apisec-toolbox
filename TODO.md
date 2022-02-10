@@ -13,6 +13,7 @@
 - [ ] [cherrybomb](https://github.com/blst-security/cherrybomb)
 - [ ]  etckeeper
 - [ ]  vim, nano
+- [ ]  yq, xq
 - [ ]  [clairvoyance](https://github.com/nikitastupin/clairvoyance)
 
 ### With errors
