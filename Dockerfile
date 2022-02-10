@@ -35,8 +35,6 @@ RUN addgroup -g 9999 $MY_GROUP && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     python2 -m pip install --upgrade pip setuptools && \
     python3 -m pip install --upgrade pip setuptools && \
-    python3 -m pip install --user yq && \
-    python3 -m pip install --user xq && \
     apk add --no-cache --update nodejs npm && \
     apk add --no-cache --update libffi-dev python3-dev && \
     apk add --no-cache --update wireshark xxd protoc && \
@@ -64,10 +62,12 @@ RUN mkdir -m 750 -p $APPS_TARGET && \
     mkdir -m 750 -p $MY_HOME/signatures && \
     mkdir -m 750 -p $MY_HOME/share/man/man1
 
-# virtual envs, pkg's and versions managers
+# virtual envs, pkg's, versions managers and utilities
 RUN python3 -m pip install --upgrade pipenv && \
     python3 -m pip install --user virtualenv && \
     python2 -m pip install --user virtualenv && \
+    python3 -m pip install --user yq && \
+    python3 -m pip install --user xq && \
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
     export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH" && \
     echo 'if which ruby >/dev/null && which gem >/dev/null; then PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"; fi' >> ~/.bashrc && \
