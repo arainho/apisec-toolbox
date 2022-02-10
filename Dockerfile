@@ -21,7 +21,7 @@ RUN addgroup -g 9999 $MY_GROUP && \
     adduser $MY_USER wheel && \
     echo "$MY_USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$MY_USER && \
     chmod 0440 /etc/sudoers.d/$MY_USER && \
-    apk add --no-cache bash zsh fish \
+    apk add --no-cache bash zsh fish vim nano \
                        bind-tools openssh git strace gdb \
                        mandoc man-pages less less-doc jq \
                        netcat-openbsd curl wget httpie nmap \
@@ -34,6 +34,8 @@ RUN addgroup -g 9999 $MY_GROUP && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     python2 -m pip install --upgrade pip setuptools && \
     python3 -m pip install --upgrade pip setuptools && \
+    python3 -m pip install --user yq && \
+    python3 -m pip install --user xq && \
     apk add --no-cache --update nodejs npm && \
     apk add --no-cache --update libffi-dev python3-dev && \
     apk add --no-cache --update wireshark xxd protoc && \
@@ -47,6 +49,14 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache --update bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
     apk add --no-cache ragel boost-dev pkgconfig libpcap-dev && \
     apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
+    apk add --no-cache --update etckeeper && \
+        sed -i -- 's/VCS=.*/VCS\="git"/g' /etc/etckeeper/etckeeper.conf && \
+        git config --global init.defaultBranch master && \
+        git config --global user.email "me@apisec-toolbox.local" && \
+        git config --global user.name "Me Myself and I" && \
+        cd /etc/ && \
+        etckeeper init && \
+        etckeeper commit "initial commit of /etc directory" && \
     adduser $MY_USER wireshark
 
 USER $MY_USER
@@ -252,7 +262,13 @@ RUN git clone --depth=1  https://github.com/TheHackerDev/race-the-web $MY_HOME/r
     go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest  && \
     go install -v github.com/projectdiscovery/proxify/cmd/proxify@latest && \
     go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest && \
-    go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+    go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest && \
+    git clone --depth=1 https://github.com/nikitastupin/clairvoyance.git $APPS_TARGET/clairvoyance && \
+        cd $APPS_TARGET/clairvoyance && \
+        python3 -m pip install --user -r requirements.txt && \
+        clairvoyance --help
+        echo 'python3 -m clairvoyance __main__.py $@' > ~/bin/clairvoyance && \
+        chmod u+x ~/bin/clairvoyance
 
 # wordlists
 RUN curl -o $MY_HOME/wordlists/common-api-endpoints-mazen160.txt "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common-api-endpoints-mazen160.txt" && \
