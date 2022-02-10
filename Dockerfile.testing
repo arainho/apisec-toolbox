@@ -88,13 +88,7 @@ RUN python3 -m pip install --upgrade pipenv && \
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
 
-ENV TOOL_NAME="repo-supervisor"
-RUN git clone --depth=1 https://github.com/auth0/repo-supervisor.git $APPS_TARGET/repo-supervisor && \
-        cd $APPS_TARGET/repo-supervisor && \
-        npm ci && \
-        npm run build && \
-        echo '#!/bin/bash' > $MY_HOME/bin/repo-supervisor && \
-        echo 'JSON_OUTPUT=1 node $APPS_TARGET/repo-supervisor/dist/cli.js $1' >> $MY_HOME/bin/repo-supervisor && \
-        chmod u+x $MY_HOME/bin/repo-supervisor
+ENV TOOL_NAME="cherrybomb"
+RUN curl https://cherrybomb.blstsecurity.com/install	| /bin/bash
 
 CMD ["/bin/bash"]
