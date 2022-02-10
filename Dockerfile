@@ -14,40 +14,40 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # general
-RUN addgroup -g 9999 $MY_GROUP && \
-    adduser -u 9999 -D -G $MY_GROUP -h $MY_HOME $MY_USER && \
-    apk update && \
-    apk add --no-cache sudo && \
-    adduser $MY_USER wheel && \
-    adduser $MY_USER wireshark && \
-    echo "$MY_USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$MY_USER && \
-    chmod 0440 /etc/sudoers.d/$MY_USER && \
-    apk add --no-cache bash zsh fish vim nano \
+RUN addgroup -g 9999 $MY_GROUP 
+RUN adduser -u 9999 -D -G $MY_GROUP -h $MY_HOME $MY_USER 
+RUN apk update 
+RUN apk add --no-cache sudo 
+RUN adduser $MY_USER wheel 
+RUN adduser $MY_USER wireshark 
+RUN echo "$MY_USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$MY_USER 
+RUN chmod 0440 /etc/sudoers.d/$MY_USER 
+RUN apk add --no-cache bash zsh fish vim nano \
                        bind-tools openssh git strace gdb \
                        mandoc man-pages less less-doc jq \
                        netcat-openbsd curl wget httpie nmap \
-                       ca-certificates coreutils libzip-dev zip unzip && \
-    apk add --no-cache --update python2 python3 py3-pip && \
-    python2 -m ensurepip && \
-    unlink /usr/bin/pip && \
-    unlink /usr/bin/python && \
-    ln -s /usr/bin/pip3 /usr/bin/pip && \
-    ln -s /usr/bin/python3 /usr/bin/python && \
-    python2 -m pip install --upgrade pip setuptools && \
-    python3 -m pip install --upgrade pip setuptools && \
-    apk add --no-cache --update nodejs npm && \
-    apk add --no-cache --update libffi-dev python3-dev && \
-    apk add --no-cache --update wireshark xxd protoc && \
-    apk add --no-cache --update perl && \
-    apk add --no-cache --update ruby ruby-dev && \
-    apk add --no-cache --update openssl openssl-dev openssl-libs-static  && \
-    apk add --no-cache --update alpine-sdk clang gcc make build-base cmake && \
-    apk add --no-cache --update bsd-compat-headers linux-headers && \
-    apk add --no-cache --update zlib-dev libevent libevent-dev && \
-    apk add --no-cache --update openjdk8-jre gradle && \
-    apk add --no-cache --update bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
-    apk add --no-cache ragel boost-dev pkgconfig libpcap-dev && \
-    apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing
+                       ca-certificates coreutils libzip-dev zip unzip 
+RUN apk add --no-cache --update python2 python3 py3-pip 
+RUN python2 -m ensurepip 
+RUN unlink /usr/bin/pip 
+RUN unlink /usr/bin/python 
+RUN ln -s /usr/bin/pip3 /usr/bin/pip 
+RUN ln -s /usr/bin/python3 /usr/bin/python 
+RUN python2 -m pip install --upgrade pip setuptools 
+RUN python3 -m pip install --upgrade pip setuptools 
+RUN apk add --no-cache --update nodejs npm 
+RUN apk add --no-cache --update libffi-dev python3-dev 
+RUN apk add --no-cache --update wireshark xxd protoc 
+RUN apk add --no-cache --update perl 
+RUN apk add --no-cache --update ruby ruby-dev 
+RUN apk add --no-cache --update openssl openssl-dev openssl-libs-static  
+RUN apk add --no-cache --update alpine-sdk clang gcc make build-base cmake 
+RUN apk add --no-cache --update bsd-compat-headers linux-headers 
+RUN apk add --no-cache --update zlib-dev libevent libevent-dev 
+RUN apk add --no-cache --update openjdk8-jre gradle 
+RUN apk add --no-cache --update bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib 
+RUN apk add --no-cache ragel boost-dev pkgconfig libpcap-dev 
+RUN apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing
 
 USER $MY_USER
 WORKDIR $MY_HOME
