@@ -88,7 +88,13 @@ RUN python3 -m pip install --upgrade pipenv && \
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
 
-ENV TOOL_NAME="nano"
-RUN apk add --no-cache --update nano
+ENV TOOL_NAME="etckeeper"
+RUN apk add --no-cache --update etckeeper && \
+        sed -i -- 's/VCS=.*/VCS\="git"/g' /etc/etckeeper/etckeeper.conf && \
+        git config --global user.email "me@apisec-toolbox.local" && \
+        git config --global user.name "Me Myself and I" && \
+        cd /etc/ && \
+        etckeeper init && \
+        etckeeper commit "initial commit of /etc directory" && \
 
 CMD ["/bin/bash"]
