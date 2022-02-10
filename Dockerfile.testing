@@ -91,16 +91,11 @@ RUN python3 -m pip install --upgrade pipenv && \
 # 4. build the image                                  #
 #######################################################
 # WARNING: If you need root privileges to install tools, move the two lines below before entry USER="$MY_USER" !
-
+#
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
 
-ENV TOOL_NAME="clairvoyance"
-RUN git clone --depth=1 https://github.com/nikitastupin/clairvoyance.git $APPS_TARGET/clairvoyance && \
-        cd $APPS_TARGET/clairvoyance && \
-        python3 -m pip install --user -r requirements.txt && \
-        echo 'python3 -m clairvoyance __main__.py $@' > ~/bin/clairvoyance && \
-        chmod u+x ~/bin/clairvoyance
-        
+ENV TOOL_NAME="yq"
+RUN python3 -m pip install --user yq
 
 CMD ["/bin/bash"]
