@@ -98,6 +98,7 @@ RUN python3 -m pip install --upgrade pipenv && \
 ENV TOOL_NAME="clairvoyance"
 RUN git clone --depth=1 https://github.com/nikitastupin/clairvoyance.git $APPS_TARGET/clairvoyance && \
         cd $APPS_TARGET/clairvoyance && \
-        python3 -m pip install --user -r requirements.txt
+        python3 -m pip install --user -r requirements.txt && \
+        clairvoyance --help
 
 CMD ["/bin/bash"]
