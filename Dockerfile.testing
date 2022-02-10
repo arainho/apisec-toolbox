@@ -51,8 +51,8 @@ RUN addgroup -g 9999 $MY_GROUP && \
 
 
 ### TESTING OS tools
-ENV TOOL_NAME="vim"
-RUN apk add --no-cache --update vim
+ENV TOOL_NAME="nano"
+RUN apk add --no-cache --update nano
 
 USER $MY_USER
 WORKDIR $MY_HOME
@@ -89,7 +89,7 @@ RUN python3 -m pip install --upgrade pipenv && \
 # 3. uncomment ENV and RUN lines                      #
 # 4. build the image                                  #
 #######################################################
-# NOTE: !!! Move the two lines below before entry USER="$MY_USER" if you need root privileges to install tools !!!
+# WARNING: Move the two lines below before entry USER="$MY_USER" if you need root privileges to install tools !!!
 
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
