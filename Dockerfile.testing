@@ -50,17 +50,10 @@ RUN addgroup -g 9999 $MY_GROUP && \
     adduser $MY_USER wireshark
 
 
-### TESTING OS tools
-### TESTING OS tools
-ENV TOOL_NAME="etckeeper"
-RUN apk add --no-cache --update etckeeper && \
-        sed -i -- 's/VCS=.*/VCS\="git"/g' /etc/etckeeper/etckeeper.conf && \
-        git config --global init.defaultBranch master && \
-        git config --global user.email "me@apisec-toolbox.local" && \
-        git config --global user.name "Me Myself and I" && \
-        cd /etc/ && \
-        etckeeper init && \
-        etckeeper commit "initial commit of /etc directory"
+### TESTING tools installation that need root privileges
+# ENV TOOL_NAME="tool-name"
+# RUN <add installation commands here>
+
 
 USER $MY_USER
 WORKDIR $MY_HOME
@@ -101,5 +94,10 @@ RUN python3 -m pip install --upgrade pipenv && \
 
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
+
+ENV TOOL_NAME="clairvoyance"
+RUN git clone --depth=1 https://github.com/nikitastupin/clairvoyance.git $APPS_TARGET/clairvoyance && \
+        cd $APPS_TARGET/clairvoyance && \
+        python3 -m pip install --user -r requirements.txt
 
 CMD ["/bin/bash"]
