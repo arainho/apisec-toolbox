@@ -99,6 +99,8 @@ ENV TOOL_NAME="clairvoyance"
 RUN git clone --depth=1 https://github.com/nikitastupin/clairvoyance.git $APPS_TARGET/clairvoyance && \
         cd $APPS_TARGET/clairvoyance && \
         python3 -m pip install --user -r requirements.txt && \
-        clairvoyance --help
+        echo 'python3 -m clairvoyance __main__.py $@' > ~/bin/clairvoyance && \
+        chmod u+x ~/bin/clairvoyance
+        
 
 CMD ["/bin/bash"]
