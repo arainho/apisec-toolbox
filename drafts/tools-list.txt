@@ -4,6 +4,10 @@
 git
 jq
 yq
+xq
+vim
+nano
+etckeeper
 
 # network
 curl
