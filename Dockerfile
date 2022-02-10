@@ -49,15 +49,7 @@ RUN addgroup -g 9999 $MY_GROUP && \
     apk add --no-cache --update openjdk8-jre gradle && \
     apk add --no-cache --update bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
     apk add --no-cache ragel boost-dev pkgconfig libpcap-dev && \
-    apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
-    apk add --no-cache --update etckeeper && \
-        sed -i -- 's/VCS=.*/VCS\="git"/g' /etc/etckeeper/etckeeper.conf && \
-        git config --global init.defaultBranch master && \
-        git config --global user.email "me@apisec-toolbox.local" && \
-        git config --global user.name "Me Myself and I" && \
-        cd /etc/ && \
-        etckeeper init && \
-        etckeeper commit "initial commit of /etc directory"
+    apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing
 
 USER $MY_USER
 WORKDIR $MY_HOME
