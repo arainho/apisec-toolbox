@@ -95,7 +95,7 @@ RUN python3 -m pip install --upgrade pipenv && \
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
 
-ENV TOOL_NAME="yq"
-RUN python3 -m pip install --user yq
+ENV TOOL_NAME="xq"
+RUN python3 -m pip install --user xq
 
 CMD ["/bin/bash"]
