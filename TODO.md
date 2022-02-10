@@ -11,6 +11,9 @@
 - [ ] [wasfsw00f](https://github.com/EnableSecurity/wafw00f)
 - [ ] [gotestwaf](https://github.com/wallarm/gotestwaf)
 - [ ] [cherrybomb](https://github.com/blst-security/cherrybomb)
+- [ ]  yq, xq
+
+#### Test passed, ddd to final image
 - [ ]  etckeeper
 - [ ]  vim, nano
 - [ ]  yq, xq
