@@ -88,7 +88,7 @@ RUN python3 -m pip install --upgrade pipenv && \
 # ENV TOOL_NAME="tool-name"
 # RUN <add installation commands here>
 
-ENV TOOL_NAME="cherrybomb"
-RUN curl https://cherrybomb.blstsecurity.com/install	| /bin/bash
+ENV TOOL_NAME="vim"
+RUN apk add --no-cache --update vim
 
 CMD ["/bin/bash"]
