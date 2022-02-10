@@ -10,14 +10,14 @@
 ### New
 - [ ] [wasfsw00f](https://github.com/EnableSecurity/wafw00f)
 - [ ] [gotestwaf](https://github.com/wallarm/gotestwaf)
-- [ ] [cherrybomb](https://github.com/blst-security/cherrybomb) [firecracker renamed to cherrybomb, needs testing]
-- [ ]  yq, xq
 
-#### Test passed, ddd to final image
+#### inital Docker.testing passed, 
+These tools need manual execution tests and afterward added to the final image:
 - [ ]  etckeeper
 - [ ]  vim, nano
 - [ ]  yq, xq
 - [ ]  [clairvoyance](https://github.com/nikitastupin/clairvoyance)
+- [ ] [cherrybomb](https://github.com/blst-security/cherrybomb) [firecracker renamed to cherrybomb, needs testing]
 
 ### With errors
 - [ ] [racepwn](https://github.com/racepwn/racepwn) 
