@@ -15,6 +15,7 @@ ENV PYTHONUNBUFFERED=1
 
 # general
 RUN addgroup -g 9999 $MY_GROUP && \
+    adduser $MY_USER wireshark && \
     adduser -u 9999 -D -G $MY_GROUP -h $MY_HOME $MY_USER && \
     apk update && \
     apk add --no-cache sudo && \
@@ -56,8 +57,7 @@ RUN addgroup -g 9999 $MY_GROUP && \
         git config --global user.name "Me Myself and I" && \
         cd /etc/ && \
         etckeeper init && \
-        etckeeper commit "initial commit of /etc directory" && \
-    adduser $MY_USER wireshark
+        etckeeper commit "initial commit of /etc directory"
 
 USER $MY_USER
 WORKDIR $MY_HOME
