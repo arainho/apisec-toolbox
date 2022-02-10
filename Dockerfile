@@ -15,8 +15,8 @@ ENV PYTHONUNBUFFERED=1
 
 # general
 RUN addgroup -g 9999 $MY_GROUP && \
-    adduser $MY_USER wireshark && \
     adduser -u 9999 -D -G $MY_GROUP -h $MY_HOME $MY_USER && \
+    adduser $MY_USER wireshark && \
     apk update && \
     apk add --no-cache sudo && \
     adduser $MY_USER wheel && \
