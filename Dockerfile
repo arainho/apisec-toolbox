@@ -16,10 +16,10 @@ ENV PYTHONUNBUFFERED=1
 # general
 RUN addgroup -g 9999 $MY_GROUP && \
     adduser -u 9999 -D -G $MY_GROUP -h $MY_HOME $MY_USER && \
-    adduser $MY_USER wireshark && \
     apk update && \
     apk add --no-cache sudo && \
     adduser $MY_USER wheel && \
+    adduser $MY_USER wireshark && \
     echo "$MY_USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$MY_USER && \
     chmod 0440 /etc/sudoers.d/$MY_USER && \
     apk add --no-cache bash zsh fish vim nano \
