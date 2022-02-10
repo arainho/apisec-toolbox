@@ -10,7 +10,7 @@
 ### New
 - [ ] [wasfsw00f](https://github.com/EnableSecurity/wafw00f)
 - [ ] [gotestwaf](https://github.com/wallarm/gotestwaf)
-- [ ] [cherrybomb](https://github.com/blst-security/cherrybomb)
+- [ ] [cherrybomb](https://github.com/blst-security/cherrybomb) [firecracker renamed to cherrybomb, needs testing]
 - [ ]  yq, xq
 
 #### Test passed, ddd to final image
@@ -23,8 +23,6 @@
 - [ ] [racepwn](https://github.com/racepwn/racepwn) 
   - fix errors on 'RUN' lines for racepwn
 - [ ] [hyperscan](https://github.com/intel/hyperscan)
-- [ ] [firecracker](https://github.com/blst-security/firecracker)
-  - installation in Dockerfile.testing completes, but tool execution was not successful.
 
 ## 3. Next steps
 - [ ] List all tools not found in path
