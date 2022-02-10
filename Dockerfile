@@ -250,6 +250,8 @@ RUN git clone --depth=1  https://github.com/TheHackerDev/race-the-web $MY_HOME/r
     git clone --depth=1 https://github.com/nikitastupin/clairvoyance.git $APPS_TARGET/clairvoyance && \
         cd $APPS_TARGET/clairvoyance && \
         python3 -m pip install --user -r requirements.txt && \
+        echo 'python3 -m clairvoyance __main__.py $@' > ~/bin/clairvoyance && \
+        chmod u+x ~/bin/clairvoyance && \
     git clone --depth=1 https://github.com/dolevf/graphw00f.git $APPS_TARGET/graphw00f && \
         ln -s $APPS_TARGET/graphw00f/main.py $MY_HOME/bin/graphw00f.py && \
     python3 -m pip install --user fuzz-lightyear && \
@@ -262,13 +264,7 @@ RUN git clone --depth=1  https://github.com/TheHackerDev/race-the-web $MY_HOME/r
     go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest  && \
     go install -v github.com/projectdiscovery/proxify/cmd/proxify@latest && \
     go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest && \
-    go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest && \
-    git clone --depth=1 https://github.com/nikitastupin/clairvoyance.git $APPS_TARGET/clairvoyance && \
-        cd $APPS_TARGET/clairvoyance && \
-        python3 -m pip install --user -r requirements.txt && \
-        clairvoyance --help
-        echo 'python3 -m clairvoyance __main__.py $@' > ~/bin/clairvoyance && \
-        chmod u+x ~/bin/clairvoyance
+    go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
 
 # wordlists
 RUN curl -o $MY_HOME/wordlists/common-api-endpoints-mazen160.txt "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common-api-endpoints-mazen160.txt" && \
