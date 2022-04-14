@@ -200,21 +200,22 @@ RUN git clone --depth=1  https://github.com/TheHackerDev/race-the-web $MY_HOME/r
         curl -o $MY_HOME/bin/race-the-web_2.0.1_lin64.bin \
              -L https://github.com/TheHackerDev/race-the-web/releases/download/2.0.1/race-the-web_2.0.1_lin64.bin && \
         chmod u+x $MY_HOME/bin/race-the-web_2.0.1_lin64.bin
-RUN gem install --user-install API_Fuzzer && \
-    git clone --depth=1 https://github.com/szski/shapeshifter.git $APPS_TARGET/shapeshifter && \
+        
+RUN gem install --user-install API_Fuzzer
+RUN git clone --depth=1 https://github.com/szski/shapeshifter.git $APPS_TARGET/shapeshifter && \
         cd $APPS_TARGET/shapeshifter/shapeshifter && \
-        python3 -m pip install --user . && \
-    git clone --depth 1 https://github.com/drwetter/testssl.sh.git $APPS_TARGET/testssl.sh && \
+        python3 -m pip install --user .
+RUN git clone --depth 1 https://github.com/drwetter/testssl.sh.git $APPS_TARGET/testssl.sh && \
         chmod +x $APPS_TARGET/testssl.sh/testssl.sh && \
-        ln -s $APPS_TARGET/testssl.sh/testssl.sh $MY_HOME/bin/testssl.sh && \
-    git clone --depth=1 https://github.com/assetnote/batchql.git $APPS_TARGET/batchql && \
-    git clone --depth=1 https://github.com/swisskyrepo/GraphQLmap $APPS_TARGET/GraphQLmap && \
-    git clone --depth=1 https://github.com/digininja/CeWL $APPS_TARGET/CeWL && \
+        ln -s $APPS_TARGET/testssl.sh/testssl.sh $MY_HOME/bin/testssl.sh
+RUN git clone --depth=1 https://github.com/assetnote/batchql.git $APPS_TARGET/batchql
+RUN git clone --depth=1 https://github.com/swisskyrepo/GraphQLmap $APPS_TARGET/GraphQLmap
+RUN git clone --depth=1 https://github.com/digininja/CeWL $APPS_TARGET/CeWL && \
         cd $APPS_TARGET/CeWL && \
         gem install --user-install bundler mime mime-types mini_exiftool nokogiri rubyzip spider && \
         chmod u+x ./cewl.rb && \
-        ln -s $APPS_TARGET/CeWL/cewl.rb $MY_HOME/bin/cewl.rb && \
-    git clone --depth=1 https://github.com/r3nt0n/bopscrk $APPS_TARGET/bopscrk && \
+        ln -s $APPS_TARGET/CeWL/cewl.rb $MY_HOME/bin/cewl.rb
+RUN git clone --depth=1 https://github.com/r3nt0n/bopscrk $APPS_TARGET/bopscrk && \
         cd $APPS_TARGET/bopscrk && \
         python3 -m pip install --user -r requirements.txt && \
     git clone --depth=1 https://github.com/imperva/automatic-api-attack-tool $APPS_TARGET/automatic-api-attack-tool && \
